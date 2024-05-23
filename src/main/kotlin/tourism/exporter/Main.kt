@@ -4,12 +4,12 @@ import tourism.exporter.googlesheets.GoogleSheetsImporter
 import tourism.exporter.orgeo.OrgeoReciever
 
 fun main() {
-    val distance = Elec2024Sprint
+    val distance = CHiPMO2024LongM
     val results =
         distance.orgeoCategories.map { category ->
             Calculator.processOrgeoData(
                 category.first,
-                OrgeoReciever.getSplits(distance.orgeoEventId, distance.orgeoSubId, category.second),
+                category.second.map { OrgeoReciever.getSplits(distance.orgeoEventId, distance.orgeoSubId, it) },
                 distance,
             )
         }

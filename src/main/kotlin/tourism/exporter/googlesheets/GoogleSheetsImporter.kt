@@ -145,7 +145,7 @@ class GoogleSheetsImporter(
             updateSheet(
                 Request().setAddSheet(
                     AddSheetRequest().setProperties(
-                        SheetProperties().setTitle(sheetName),
+                        SheetProperties().setTitle(sheetName).setIndex(0),
                     ),
                 ),
             )
@@ -233,7 +233,7 @@ class GoogleSheetsImporter(
                 mutableListOf<Any>().apply {
                     val row = startRow + index
                     // Место
-                    add(if (player.place > 0) player.place else "")
+                    add(if (player.isSuccessFinish) index + 1 else "")
                     // Фамилия Имя
                     add(player.name)
                     // Команда
@@ -565,7 +565,9 @@ class GoogleSheetsImporter(
         private const val APPLICATION_NAME: String = "Orgeo Exporter"
 
         // Orgeo Test https://docs.google.com/spreadsheets/d/1UR0XH6FxLsNTHCj39FCbhJ-87kA2erIs_3fvd-SEmlo/
-        private const val SHEET_ID: String = "1UR0XH6FxLsNTHCj39FCbhJ-87kA2erIs_3fvd-SEmlo"
+        // private const val SHEET_ID: String = "1UR0XH6FxLsNTHCj39FCbhJ-87kA2erIs_3fvd-SEmlo"
+        // Тренировки и соревнования сборной МО https://docs.google.com/spreadsheets/d/1JH1R9DmHwbh8zOXspYa5UHaOxhljhegJgirC3Pr2zMg/
+        private const val SHEET_ID: String = "1JH1R9DmHwbh8zOXspYa5UHaOxhljhegJgirC3Pr2zMg"
         private val RussiaLocale = Locale.of("ru")
         private val StartCols =
             listOf(

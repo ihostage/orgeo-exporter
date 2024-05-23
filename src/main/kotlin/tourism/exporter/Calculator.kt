@@ -9,12 +9,12 @@ import kotlin.time.toDuration
 object Calculator {
     fun processOrgeoData(
         name: String,
-        data: OrgeoResponse,
+        data: List<OrgeoResponse>,
         distance: Distance,
     ): Result {
         return Result(
             name,
-            data.participants.sortedBy { if (it.place > 0) it.place else Int.MAX_VALUE }.map { p ->
+            data.flatMap { it.participants }.filter { it.isStarted }.map { p ->
                 Player(
                     p.place,
                     p.name,
@@ -22,7 +22,7 @@ object Calculator {
                     p.finishDuration,
                     parseSplit(p, distance),
                 )
-            },
+            }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
     }
 

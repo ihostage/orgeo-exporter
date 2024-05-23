@@ -24,7 +24,7 @@ data class Distance(
     val name: String,
     val orgeoEventId: String,
     val orgeoSubId: String,
-    val orgeoCategories: List<Pair<String, String>>,
+    val orgeoCategories: List<Pair<String, List<String>>>,
     val points: List<DistancePoint>,
 ) {
     val technicalIndexes: List<Int> =
@@ -51,7 +51,7 @@ data class Player(
     val split: List<DistancePointResult>,
 ) {
     val isSuccessFinish: Boolean
-        get() = place > 0
+        get() = place > 0 && split.all { it.time != Duration.ZERO }
 }
 
 data class Result(
