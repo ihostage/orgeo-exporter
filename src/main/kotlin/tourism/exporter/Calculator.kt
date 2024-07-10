@@ -11,20 +11,22 @@ object Calculator {
         name: String,
         data: List<OrgeoResponse>,
         distance: Distance,
-    ): Result {
-        return Result(
+    ): Result =
+        Result(
             name,
-            data.flatMap { it.participants }.filter { it.isStarted }.map { p ->
-                Player(
-                    p.place,
-                    p.name,
-                    normalizeTeamName(p.team),
-                    p.finishDuration,
-                    parseSplit(p, distance),
-                )
-            }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
+            fixData(data, distance)
+                .flatMap { it.participants }
+                .filter { it.isStarted }
+                .map { p ->
+                    Player(
+                        p.place,
+                        p.name,
+                        normalizeTeamName(p.team),
+                        p.finishDuration,
+                        parseSplit(p, distance),
+                    )
+                }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
-    }
 
     private fun parseSplit(
         tourist: Tourist,
@@ -45,4 +47,16 @@ object Calculator {
     }
 
     private fun normalizeTeamName(team: String): String = team.replace("Сборная", "Сб.")
+
+    private fun fixData(
+        data: List<OrgeoResponse>,
+        distance: Distance,
+    ): List<OrgeoResponse> {
+        data.forEach { response ->
+            distance.fixesSplit.forEach { fix ->
+                response.participants.find { it.name == fix.first }?.split = fix.second
+            }
+        }
+        return data
+    }
 }

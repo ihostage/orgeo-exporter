@@ -1,4 +1,8 @@
-package tourism.exporter
+package tourism.exporter.distance
+
+import tourism.exporter.Distance
+import tourism.exporter.RunPoint
+import tourism.exporter.TechnicalPoint
 
 val Elec2024Short =
     Distance(
@@ -12,7 +16,7 @@ val Elec2024Short =
                 TechnicalPoint("П+Бревно", 62, failureCode = 162),
                 TechnicalPoint("П+IIки", 63, failureCode = 163),
                 TechnicalPoint("П+Дом1", 64, failureCode = 164),
-                RunPoint("201", 201, 300),
+                RunPoint(201, 300),
                 TechnicalPoint("П+Спуск", 65, failureCode = 165),
                 TechnicalPoint("П+Дом2", 66, failureCode = 166),
                 TechnicalPoint("П+Дом2+Ф", -1),
@@ -34,7 +38,7 @@ val Elec2024Sprint =
                 TechnicalPoint("П+Спуск", 65, failureCode = 165),
                 TechnicalPoint("П+Подъём", 66, failureCode = 166),
                 TechnicalPoint("П+Дом2", 67, failureCode = 166),
-                RunPoint("000", -1, length = 100),
+                RunPoint(-1, length = 100, "000"),
             ),
     )
 
@@ -46,18 +50,18 @@ val CHiPMO2024Pair =
         orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ_4", "ЮНИОРЫ_4"), "Ж" to listOf("ЖЕНЩИНЫ_4", "ЮНИОРКИ_4")),
         points =
             listOf(
-                RunPoint("000", 101, length = 180),
+                RunPoint(101, length = 180),
                 TechnicalPoint("IIки", 102, failureCode = 115),
-                RunPoint("010", 131, length = 730),
+                RunPoint(131, length = 730),
                 TechnicalPoint("Дом", 132, failureCode = 135),
-                RunPoint("020", 121, length = 720),
+                RunPoint(121, length = 720),
                 TechnicalPoint("Спуск", 122, failureCode = 125),
                 TechnicalPoint("Подъём", 123, failureCode = 125),
-                RunPoint("030", 111, length = 780),
+                RunPoint(111, length = 780),
                 TechnicalPoint("Лка", 112, failureCode = 115),
-                RunPoint("040", 141, length = 170),
+                RunPoint(141, length = 170),
                 TechnicalPoint("Бревно", 142, failureCode = 145),
-                RunPoint("050", -1, length = 570),
+                RunPoint(-1, length = 570),
             ),
     )
 
@@ -69,28 +73,28 @@ val CHiPMO2024LongM =
         orgeoCategories = listOf("М" to listOf("Мужчины 4 класс", "Юниоры 4 класс")),
         points =
             listOf(
-                RunPoint("40", 40),
-                RunPoint("39", 39),
-                RunPoint("111", 111),
+                RunPoint(40),
+                RunPoint(39),
+                RunPoint(111),
                 TechnicalPoint(" Спуск", 112, failureCode = 115),
-                RunPoint("121", 121),
+                RunPoint(121),
                 TechnicalPoint("IIки", 122, failureCode = 125),
-                RunPoint("32", 32),
-                RunPoint("34", 34),
-                RunPoint("36", 36),
-                RunPoint("38", 38),
-                RunPoint("41", 41),
-                RunPoint("42", 42),
-                RunPoint("44", 44),
-                RunPoint("161", 161),
+                RunPoint(32),
+                RunPoint(34),
+                RunPoint(36),
+                RunPoint(38),
+                RunPoint(41),
+                RunPoint(42),
+                RunPoint(44),
+                RunPoint(161),
                 TechnicalPoint("Навеска", 162, failureCode = 165),
-                RunPoint("131", 131),
+                RunPoint(131),
                 TechnicalPoint("Бревно", 132, failureCode = 135),
-                RunPoint("171", 171),
+                RunPoint(171),
                 TechnicalPoint("Лка", 172, failureCode = 175),
-                RunPoint("181", 181),
+                RunPoint(181),
                 TechnicalPoint("Дом", 182, failureCode = 185),
-                RunPoint("000", -1, length = 10000),
+                RunPoint(-1, length = 10000, "000"),
             ),
     )
 
@@ -102,26 +106,26 @@ val CHiPMO2024LongW =
         orgeoCategories = listOf("Ж" to listOf("Женщины 4 класс", "Юниорки 4 класс")),
         points =
         listOf(
-            RunPoint("44", 44),
-            RunPoint("39", 39),
-            RunPoint("111", 111),
+            RunPoint(44),
+            RunPoint(39),
+            RunPoint(111),
             TechnicalPoint(" Спуск", 112, failureCode = 115),
-            RunPoint("121", 121),
+            RunPoint(121),
             TechnicalPoint("IIки", 122, failureCode = 125),
-            RunPoint("32", 32),
-            RunPoint("34", 34),
-            RunPoint("36", 36),
-            RunPoint("38", 38),
-            RunPoint("40", 40),
-            RunPoint("42", 42),
-            RunPoint("161", 161),
+            RunPoint(32),
+            RunPoint(34),
+            RunPoint(36),
+            RunPoint(38),
+            RunPoint(40),
+            RunPoint(42),
+            RunPoint(161),
             TechnicalPoint("Навеска", 162, failureCode = 165),
-            RunPoint("131", 131),
+            RunPoint(131),
             TechnicalPoint("Бревно", 132, failureCode = 135),
-            RunPoint("171", 171),
+            RunPoint(171),
             TechnicalPoint("Лка", 172, failureCode = 175),
-            RunPoint("181", 181),
+            RunPoint(181),
             TechnicalPoint("Дом", 182, failureCode = 185),
-            RunPoint("000", -1, length = 9000),
+            RunPoint(-1, length = 9000, "000"),
         ),
     )

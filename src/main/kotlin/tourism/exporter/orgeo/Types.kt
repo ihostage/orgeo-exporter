@@ -12,7 +12,7 @@ data class OrgeoResponse(
     val subId: String,
     val dist: String,
     @JsonProperty("finish")
-    val participants: List<Tourist>,
+    val participants: MutableList<Tourist>,
 )
 
 data class Tourist(
@@ -23,21 +23,22 @@ data class Tourist(
     @JsonProperty("finish_ms")
     val finishMS: String,
     @JsonProperty("spl")
-    val split: String,
+    var split: String,
     @JsonProperty("otm")
-    val state: String
+    val state: String,
 ) {
     val finishDuration: Duration = parseDuration(finish)
 
-    val parsedSplit: List<Pair<Int, Duration>> =
-        mutableListOf<Pair<Int, Duration>>().apply {
-            val splitQueue = LinkedList(split.split("|"))
-            while (splitQueue.size > 1) {
-                val duration = parseDuration(splitQueue.poll())
-                val code = splitQueue.poll().toInt()
-                add(Pair(code, duration))
+    val parsedSplit: List<Pair<Int, Duration>>
+        get() =
+            mutableListOf<Pair<Int, Duration>>().apply {
+                val splitQueue = LinkedList(split.split("|"))
+                while (splitQueue.size > 1) {
+                    val duration = parseDuration(splitQueue.poll())
+                    val code = splitQueue.poll().toInt()
+                    add(Pair(code, duration))
+                }
             }
-        }
 
     val isStarted: Boolean = state != "8"
 }

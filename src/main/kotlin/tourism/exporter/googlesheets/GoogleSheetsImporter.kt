@@ -68,15 +68,8 @@ class GoogleSheetsImporter(
     private val distance: Distance,
     private val results: List<Result>,
 ) {
-    private val transport: NetHttpTransport = GoogleNetHttpTransport.newTrustedTransport()
-    private val jsonFactory: JsonFactory = GsonFactory.getDefaultInstance()
-    private val credentials: Credential = authorizeByCodeFlow()
-    private val sheets: Sheets =
-        Sheets.Builder(transport, jsonFactory, credentials)
-            .setApplicationName(APPLICATION_NAME)
-            .build()
     private val spreadsheet: Spreadsheet
-        get() = sheets.spreadsheets().get(SHEET_ID).execute()
+        get() = sheets.spreadsheets().get(sheetId).execute()
     private lateinit var sheet: Sheet
 
     private val sheetName: String = distance.name
@@ -102,22 +95,6 @@ class GoogleSheetsImporter(
     private val runPercentColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_PERCENT) + 1
     private val runPaceColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_PACE) + 1
     private val runRankColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_RANK) + 1
-
-    private fun authorizeByCodeFlow(): Credential {
-        val creds = GoogleSheetsImporter::class.java.getResourceAsStream("/google-sheets-client-secret.json")!!
-        val clientSecrets = GoogleClientSecrets.load(jsonFactory, InputStreamReader(creds))
-        val flow =
-            GoogleAuthorizationCodeFlow.Builder(
-                transport,
-                jsonFactory,
-                clientSecrets,
-                listOf(SheetsScopes.SPREADSHEETS),
-            ).setDataStoreFactory(
-                MemoryDataStoreFactory(),
-            )
-                .setAccessType("offline").build()
-        return AuthorizationCodeInstalledApp(flow, LocalServerReceiver()).authorize("user")
-    }
 
     fun import() {
         createSheetIfNotExist()
@@ -153,19 +130,19 @@ class GoogleSheetsImporter(
         sheet = spreadsheet.sheets.find { it.properties.title == sheetName }!!
         updateSheet(
             Request().setUpdateSheetProperties(
-                UpdateSheetPropertiesRequest().setProperties(
-                    SheetProperties().setSheetId(sheet.properties.sheetId).apply {
-                        gridProperties =
-                            GridProperties().apply {
-                                // Заголовок + Идеальное прохождение
-                                frozenRowCount = 1 + results.size
-                                frozenColumnCount = 2
-                                columnCount = countCols
-                                rowCount = countRows
-                            }
-                    },
-                )
-                    .setFields("gridProperties(frozenRowCount,frozenColumnCount,columnCount,rowCount)"),
+                UpdateSheetPropertiesRequest()
+                    .setProperties(
+                        SheetProperties().setSheetId(sheet.properties.sheetId).apply {
+                            gridProperties =
+                                GridProperties().apply {
+                                    // Заголовок + Идеальное прохождение
+                                    frozenRowCount = 1 + results.size
+                                    frozenColumnCount = 2
+                                    columnCount = countCols
+                                    rowCount = countRows
+                                }
+                        },
+                    ).setFields("gridProperties(frozenRowCount,frozenColumnCount,columnCount,rowCount)"),
             ),
         )
     }
@@ -243,7 +220,16 @@ class GoogleSheetsImporter(
                     // % рез.
                     add("=${resultColumn.colName}$row/\$${resultColumn.colName}\$$startRow")
                     // Сплиты
-                    addAll(player.split.map { formatDuration(it.time.inWholeMilliseconds, "HH:mm:ss") })
+                    addAll(
+                        player.split.map {
+                            // TODO: нужно как-то учитывать отсечки, чтобы перегон на финиш не был отрицательным
+                            if (it.time.inWholeMilliseconds < 0) {
+                                ""
+                            } else {
+                                formatDuration(it.time.inWholeMilliseconds, "HH:mm:ss")
+                            }
+                        },
+                    )
                     // ∑ Этапы
                     add("=${distance.technicalIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
                     // % эт.
@@ -286,35 +272,32 @@ class GoogleSheetsImporter(
     }
 
     private fun updateSheet(vararg requests: Request) =
-        sheets.spreadsheets()
-            .batchUpdate(SHEET_ID, BatchUpdateSpreadsheetRequest().setRequests(requests.asList()))
+        sheets
+            .spreadsheets()
+            .batchUpdate(sheetId, BatchUpdateSpreadsheetRequest().setRequests(requests.asList()))
             .execute()
 
     private fun updateValues(
         range: String,
         valueInputOption: String,
         values: List<List<Any>>,
-    ): UpdateValuesResponse {
-        return sheets.spreadsheets()
+    ): UpdateValuesResponse =
+        sheets
+            .spreadsheets()
             .values()
-            .update(SHEET_ID, range, ValueRange().setValues(values))
+            .update(sheetId, range, ValueRange().setValues(values))
             .setValueInputOption(valueInputOption)
             .execute()
-    }
 
     private fun updateRawValues(
         range: String,
         values: List<List<Any>>,
-    ): UpdateValuesResponse {
-        return updateValues(range, "RAW", values)
-    }
+    ): UpdateValuesResponse = updateValues(range, "RAW", values)
 
     private fun updateUserEnteredValues(
         range: String,
         values: List<List<Any>>,
-    ): UpdateValuesResponse {
-        return updateValues(range, "USER_ENTERED", values)
-    }
+    ): UpdateValuesResponse = updateValues(range, "USER_ENTERED", values)
 
     private fun formatTitle() = updateSheet(repeatCell(oneRowRange(1), CENTER, Exo2Bold, borders = BottomSolidThick))
 
@@ -331,14 +314,15 @@ class GoogleSheetsImporter(
     private fun formatSplitColumns() =
         updateSheet(
             requests =
-                distance.points.mapIndexed { index, point ->
-                    repeatCell(
-                        oneColRange(firstSplitColumn + index),
-                        CENTER,
-                        if (point is TechnicalPoint) Exo2Bold else Exo2,
-                        SplitTimeFormat,
-                    )
-                }.toTypedArray(),
+                distance.points
+                    .mapIndexed { index, point ->
+                        repeatCell(
+                            oneColRange(firstSplitColumn + index),
+                            CENTER,
+                            if (point is TechnicalPoint) Exo2Bold else Exo2,
+                            SplitTimeFormat,
+                        )
+                    }.toTypedArray(),
         )
 
     private fun formatTechSumColumn() =
@@ -388,11 +372,12 @@ class GoogleSheetsImporter(
     private fun formatGradient() {
         sheet.conditionalFormats?.let {
             val requests =
-                (it.size - 1 downTo 0).map { index ->
-                    Request().setDeleteConditionalFormatRule(
-                        DeleteConditionalFormatRuleRequest().setSheetId(sheet.properties.sheetId).setIndex(index),
-                    )
-                }.toTypedArray()
+                (it.size - 1 downTo 0)
+                    .map { index ->
+                        Request().setDeleteConditionalFormatRule(
+                            DeleteConditionalFormatRuleRequest().setSheetId(sheet.properties.sheetId).setIndex(index),
+                        )
+                    }.toTypedArray()
             updateSheet(requests = requests)
         }
         val gradientRule =
@@ -564,10 +549,7 @@ class GoogleSheetsImporter(
     companion object {
         private const val APPLICATION_NAME: String = "Orgeo Exporter"
 
-        // Orgeo Test https://docs.google.com/spreadsheets/d/1UR0XH6FxLsNTHCj39FCbhJ-87kA2erIs_3fvd-SEmlo/
-        // private const val SHEET_ID: String = "1UR0XH6FxLsNTHCj39FCbhJ-87kA2erIs_3fvd-SEmlo"
-        // Тренировки и соревнования сборной МО https://docs.google.com/spreadsheets/d/1JH1R9DmHwbh8zOXspYa5UHaOxhljhegJgirC3Pr2zMg/
-        private const val SHEET_ID: String = "1JH1R9DmHwbh8zOXspYa5UHaOxhljhegJgirC3Pr2zMg"
+        lateinit var sheetId: String
         private val RussiaLocale = Locale.of("ru")
         private val StartCols =
             listOf(
@@ -587,5 +569,32 @@ class GoogleSheetsImporter(
                 TitleNames.RUN_PACE,
                 TitleNames.RUN_RANK,
             )
+
+        private val transport: NetHttpTransport = GoogleNetHttpTransport.newTrustedTransport()
+        private val jsonFactory: JsonFactory = GsonFactory.getDefaultInstance()
+        private val credentials: Credential by lazy { authorizeByCodeFlow() }
+        private val sheets: Sheets by lazy {
+            Sheets
+                .Builder(transport, jsonFactory, credentials)
+                .setApplicationName(APPLICATION_NAME)
+                .build()
+        }
+
+        private fun authorizeByCodeFlow(): Credential {
+            val creds = GoogleSheetsImporter::class.java.getResourceAsStream("/google-sheets-client-secret.json")!!
+            val clientSecrets = GoogleClientSecrets.load(jsonFactory, InputStreamReader(creds))
+            val flow =
+                GoogleAuthorizationCodeFlow
+                    .Builder(
+                        transport,
+                        jsonFactory,
+                        clientSecrets,
+                        listOf(SheetsScopes.SPREADSHEETS),
+                    ).setDataStoreFactory(
+                        MemoryDataStoreFactory(),
+                    ).setAccessType("offline")
+                    .build()
+            return AuthorizationCodeInstalledApp(flow, LocalServerReceiver()).authorize("user")
+        }
     }
 }

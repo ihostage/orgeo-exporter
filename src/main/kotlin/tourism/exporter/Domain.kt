@@ -8,7 +8,11 @@ sealed interface DistancePoint {
     fun hasCode(code: Int): Boolean
 }
 
-data class RunPoint(override val name: String, val code: Int, val length: Int = 0) : DistancePoint {
+data class RunPoint(
+    val code: Int,
+    val length: Int = 0,
+    override val name: String = code.toString(),
+) : DistancePoint {
     override fun hasCode(code: Int): Boolean = this.code == code
 }
 
@@ -26,14 +30,17 @@ data class Distance(
     val orgeoSubId: String,
     val orgeoCategories: List<Pair<String, List<String>>>,
     val points: List<DistancePoint>,
+    val fixesSplit: List<Pair<String, String>> = listOf(),
 ) {
     val technicalIndexes: List<Int> =
-        points.mapIndexed { index, distancePoint -> Pair(index, distancePoint) }
+        points
+            .mapIndexed { index, distancePoint -> Pair(index, distancePoint) }
             .filter { it.second is TechnicalPoint }
             .map { it.first }
 
     val runIndexes: List<Int> =
-        points.mapIndexed { index, distancePoint -> Pair(index, distancePoint) }
+        points
+            .mapIndexed { index, distancePoint -> Pair(index, distancePoint) }
             .filter { it.second is RunPoint }
             .map { it.first }
 }
