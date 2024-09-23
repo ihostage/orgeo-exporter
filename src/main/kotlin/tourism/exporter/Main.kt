@@ -1,7 +1,7 @@
 package tourism.exporter
 
-import tourism.exporter.distance.ChR24GroupM
-import tourism.exporter.distance.ChR24GroupW
+import tourism.exporter.distance.KMO_24_Pair_Sprint
+import tourism.exporter.distance.KMO_24_Sprint
 import tourism.exporter.googlesheets.GoogleSheetsImporter
 import tourism.exporter.orgeo.OrgeoReciever
 
@@ -13,7 +13,7 @@ fun main() {
     // Сборной МО 3/4 класс https://docs.google.com/spreadsheets/d/1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4/
     // GoogleSheetsImporter.sheetId = "1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4"
 
-    val distances = listOf(ChR24GroupW, ChR24GroupM)
+    val distances = listOf(KMO_24_Sprint, KMO_24_Pair_Sprint)
     distances.forEach { distance ->
         val results =
             distance.orgeoCategories.map { category ->
