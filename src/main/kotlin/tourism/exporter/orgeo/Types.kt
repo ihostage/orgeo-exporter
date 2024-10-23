@@ -19,13 +19,13 @@ data class Tourist(
     val place: Int,
     val name: String,
     val team: String,
-    val finish: String,
+    val finish: String = "00:00:00",
     @JsonProperty("finish_ms")
     val finishMS: String,
     @JsonProperty("spl")
     var split: String,
     @JsonProperty("otm")
-    val state: String,
+    val state: String?,
 ) {
     val finishDuration: Duration = parseDuration(finish)
 

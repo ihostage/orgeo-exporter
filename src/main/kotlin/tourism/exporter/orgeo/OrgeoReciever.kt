@@ -3,6 +3,7 @@ package tourism.exporter.orgeo
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.KotlinFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
@@ -16,7 +17,7 @@ object OrgeoReciever {
 
     private var objectMapper: ObjectMapper =
         ObjectMapper()
-            .registerModule(KotlinModule.Builder().build())
+            .registerModule(KotlinModule.Builder().configure(KotlinFeature.NullIsSameAsDefault, true).build())
             .registerModule(JavaTimeModule())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
@@ -27,14 +28,17 @@ object OrgeoReciever {
     ): OrgeoResponse {
         // https://orgeo.ru/online/finish/34974?api=json&d=девушки&s=1
         val httpUrl =
-            baseUrl.toHttpUrl().newBuilder()
+            baseUrl
+                .toHttpUrl()
+                .newBuilder()
                 .addPathSegment(eventId)
                 .addQueryParameter("api", "json")
                 .addQueryParameter("s", subId)
                 .addQueryParameter("d", category)
                 .build()
         val request: Request =
-            Request.Builder()
+            Request
+                .Builder()
                 .url(httpUrl)
                 .build()
 

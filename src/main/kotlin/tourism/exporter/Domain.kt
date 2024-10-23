@@ -9,11 +9,13 @@ sealed interface DistancePoint {
 }
 
 data class RunPoint(
-    val code: Int,
+    val codes: List<Int>,
     val length: Int = 0,
-    override val name: String = code.toString(),
+    override val name: String = codes.toString(),
 ) : DistancePoint {
-    override fun hasCode(code: Int): Boolean = this.code == code
+    constructor(code: Int, length: Int = 0, name: String = code.toString()) : this(listOf(code), length, name)
+
+    override fun hasCode(code: Int): Boolean = this.codes.contains(code)
 }
 
 data class TechnicalPoint(

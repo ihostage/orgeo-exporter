@@ -165,6 +165,7 @@ class GoogleSheetsImporter(
         startRow: Int,
         result: Result,
     ) {
+        val endRow = startRow + result.countSuccessFinish - 1
         updateUserEnteredValues(
             "$sheetName!B$row",
             listOf(
@@ -180,16 +181,16 @@ class GoogleSheetsImporter(
                     addAll(
                         (0..<distance.points.size).map {
                             val range =
-                                "${(firstSplitColumn + it).colName}$startRow:${(firstSplitColumn + it).colName}${startRow + result.countSuccessFinish - 1}"
+                                "${(firstSplitColumn + it).colName}$startRow:${(firstSplitColumn + it).colName}$endRow"
                             "=MINIFS($range;$range;\"<>0\")"
                         },
                     )
                     add("=${distance.technicalIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
-                    add("=${techSumColumn.colName}$row/\$${techSumColumn.colName}\$$startRow")
+                    add("=${techSumColumn.colName}$row/MIN(${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow)")
                     add("")
                     if (distance.runIndexes.isNotEmpty()) {
                         add("=${distance.runIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
-                        add("=${runSumColumn.colName}$row/\$${runSumColumn.colName}\$$startRow")
+                        add("=${runSumColumn.colName}$row/MIN(${runSumColumn.colName}$startRow:${runSumColumn.colName}$endRow)")
                         add("")
                         add("")
                     } else {
