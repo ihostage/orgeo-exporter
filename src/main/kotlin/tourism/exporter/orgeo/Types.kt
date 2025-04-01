@@ -34,11 +34,13 @@ data class Tourist(
             mutableListOf<Pair<Int, Duration>>().apply {
                 val splitQueue = LinkedList(split.split("|"))
                 while (splitQueue.size > 1) {
-                    val duration = parseDuration(splitQueue.poll())
                     try {
+                        val duration = parseDuration(splitQueue.poll())
                         val code = splitQueue.poll().toInt()
                         add(Pair(code, duration))
-                    } catch (_: NumberFormatException) {}
+                    } catch (_: NumberFormatException) {
+                    } catch (_: IndexOutOfBoundsException) {
+                    }
                 }
             }
 

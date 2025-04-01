@@ -1,7 +1,6 @@
 package tourism.exporter
 
-import tourism.exporter.distance.KMO_24_Pair_Sprint
-import tourism.exporter.distance.KMO_24_Sprint
+import tourism.exporter.distance.kmo.KMO_25_Sprint_2class
 import tourism.exporter.googlesheets.GoogleSheetsImporter
 import tourism.exporter.orgeo.OrgeoReciever
 
@@ -12,8 +11,10 @@ fun main() {
     // GoogleSheetsImporter.sheetId = "1JH1R9DmHwbh8zOXspYa5UHaOxhljhegJgirC3Pr2zMg"
     // Сборной МО 3/4 класс https://docs.google.com/spreadsheets/d/1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4/
     // GoogleSheetsImporter.sheetId = "1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4"
+    // Лёха Безруков https://docs.google.com/spreadsheets/d/1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE/
+    // GoogleSheetsImporter.sheetId = "1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE"
 
-    val distances = listOf(KMO_24_Sprint, KMO_24_Pair_Sprint)
+    val distances = listOf(KMO_25_Sprint_2class)
     distances.forEach { distance ->
         val results =
             distance.orgeoCategories.map { category ->
