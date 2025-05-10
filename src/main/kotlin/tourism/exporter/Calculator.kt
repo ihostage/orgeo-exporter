@@ -24,6 +24,7 @@ object Calculator {
                         normalizeTeamName(p.team),
                         p.finishDuration,
                         parseSplit(p, distance),
+                        p.isStarted && !p.isRemoved
                     )
                 }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
@@ -34,7 +35,7 @@ object Calculator {
     ): List<DistancePointResult> {
         var splitIndex = 0
         val split =
-            distance.points.subList(0, distance.points.size - 1).map { point ->
+            distance.points.filter { !it.hasCode("-1") }.map { point ->
                 var duration = Duration.ZERO
                 while (splitIndex < tourist.parsedSplit.size && point.hasCode(tourist.parsedSplit[splitIndex].first)) {
                     duration = duration.plus(tourist.parsedSplit[splitIndex].second)
@@ -42,6 +43,9 @@ object Calculator {
                 }
                 DistancePointResult(point, duration)
             }
+        if (split.size == distance.points.size) {
+            return split
+        }
         val finish: Duration = tourist.finishDuration.minus(split.sumOf { it.time.inWholeMilliseconds }.toDuration(MILLISECONDS))
         return split.plus(DistancePointResult(distance.points.last(), finish))
     }

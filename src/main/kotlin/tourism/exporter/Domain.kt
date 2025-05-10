@@ -5,17 +5,18 @@ import kotlin.time.Duration
 sealed interface DistancePoint {
     val name: String
 
-    fun hasCode(code: Int): Boolean
+    fun hasCode(code: String): Boolean
 }
 
 data class RunPoint(
-    val codes: List<Int>,
+    val codes: List<String>,
     val length: Int = 0,
     override val name: String = codes.toString(),
 ) : DistancePoint {
-    constructor(code: Int, length: Int = 0, name: String = code.toString()) : this(listOf(code), length, name)
+    constructor(code: Int, length: Int = 0, name: String = code.toString()) : this(listOf(code.toString()), length, name)
+    constructor(code: String, length: Int = 0, name: String = code) : this(listOf(code), length, name)
 
-    override fun hasCode(code: Int): Boolean = this.codes.contains(code)
+    override fun hasCode(code: String): Boolean = this.codes.contains(code)
 }
 
 data class TechnicalPoint(
@@ -23,7 +24,7 @@ data class TechnicalPoint(
     val successCode: Int,
     val failureCode: Int = -1,
 ) : DistancePoint {
-    override fun hasCode(code: Int): Boolean = code == successCode || failureCode == code
+    override fun hasCode(code: String): Boolean = code == successCode.toString() || failureCode.toString() == code
 }
 
 data class Distance(
@@ -58,9 +59,10 @@ data class Player(
     val team: String,
     val result: Duration,
     val split: List<DistancePointResult>,
-) {
     val isSuccessFinish: Boolean
-        get() = place > 0 && split.all { it.time != Duration.ZERO }
+) {
+    val isGoodSplit: Boolean
+        get() = split.all { it.time.isPositive() }
 }
 
 data class Result(
@@ -69,4 +71,7 @@ data class Result(
 ) {
     val countSuccessFinish: Int
         get() = players.count { it.isSuccessFinish }
+
+    fun minimalGoodSplitValue(point: Int): Duration =
+        players.filter { it.isSuccessFinish }.map { it.split[point].time }.filter { it.isPositive() }.min()
 }

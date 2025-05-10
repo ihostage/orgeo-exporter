@@ -29,14 +29,14 @@ data class Tourist(
 ) {
     val finishDuration: Duration = parseDuration(finish)
 
-    val parsedSplit: List<Pair<Int, Duration>>
+    val parsedSplit: List<Pair<String, Duration>>
         get() =
-            mutableListOf<Pair<Int, Duration>>().apply {
+            mutableListOf<Pair<String, Duration>>().apply {
                 val splitQueue = LinkedList(split.split("|"))
                 while (splitQueue.size > 1) {
                     try {
                         val duration = parseDuration(splitQueue.poll())
-                        val code = splitQueue.poll().toInt()
+                        val code = splitQueue.poll()
                         add(Pair(code, duration))
                     } catch (_: NumberFormatException) {
                     } catch (_: IndexOutOfBoundsException) {
@@ -45,4 +45,5 @@ data class Tourist(
             }
 
     val isStarted: Boolean = state != "8"
+    val isRemoved: Boolean = state == "1"
 }

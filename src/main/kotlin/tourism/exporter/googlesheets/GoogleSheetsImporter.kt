@@ -224,21 +224,33 @@ class GoogleSheetsImporter(
                     addAll(
                         player.split.map {
                             // TODO: нужно как-то учитывать отсечки, чтобы перегон на финиш не был отрицательным
-                            if (it.time.inWholeMilliseconds < 0) {
-                                ""
-                            } else {
+                            if (it.time.inWholeMilliseconds > 0) {
                                 formatDuration(it.time.inWholeMilliseconds, "HH:mm:ss")
+                            } else {
+                                ""
                             }
                         },
                     )
                     // ∑ Этапы
-                    add("=${distance.technicalIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
+                    add(
+                        if (player.isGoodSplit) {
+                            "=${distance.technicalIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}"
+                        } else {
+                            ""
+                        }
+                    )
                     // % эт.
-                    add("=${techSumColumn.colName}$row/MIN(\$${techSumColumn.colName}\$$startRow:\$${techSumColumn.colName}\$$endRow)")
+                    add(
+                        if (player.isGoodSplit) {
+                            "=${techSumColumn.colName}$row/MIN(\$${techSumColumn.colName}\$$startRow:\$${techSumColumn.colName}\$$endRow)"
+                        } else {
+                            ""
+                        }
+                    )
                     // Ранг эт.
                     add(
-                        if (player.isSuccessFinish) {
-                            "=RANK(${techSumColumn.colName}$row;${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow; 1)"
+                        if (player.isSuccessFinish && player.isGoodSplit) {
+                            "=RANK(${techSumColumn.colName}$row;\$${techSumColumn.colName}\$$startRow:\$${techSumColumn.colName}\$$endRow; 1)"
                         } else {
                             ""
                         },
@@ -246,21 +258,37 @@ class GoogleSheetsImporter(
                     if (distance.runIndexes.isNotEmpty()) {
                         val runSumCol = runSumColumn.colName
                         // ∑ Перебеги
-                        add("=${distance.runIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
+                        add(
+                            if (player.isGoodSplit) {
+                                "=${distance.runIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}"
+                            } else {
+                                ""
+                            }
+                        )
                         // % пер.
-                        add("=$runSumCol$row/MIN(\$$runSumCol\$$startRow:\$$runSumCol\$$endRow)")
+                        add(
+                            if (player.isGoodSplit) {
+                                "=$runSumCol$row/MIN(\$$runSumCol\$$startRow:\$$runSumCol\$$endRow)"
+                            } else {
+                                ""
+                            }
+                        )
                         // Темп
                         add(
-                            "=$runSumCol$row/${
-                                "%.2f".format(
-                                    RussiaLocale,
-                                    distance.points.filterIsInstance<RunPoint>().sumOf { it.length } / 1000.0,
-                                )
-                            }",
+                            if (player.isGoodSplit) {
+                                "=$runSumCol$row/${
+                                    "%.2f".format(
+                                        RussiaLocale,
+                                        distance.points.filterIsInstance<RunPoint>().sumOf { it.length } / 1000.0,
+                                    )
+                                }"
+                            } else {
+                                ""
+                            }
                         )
                         // Ранг пер.
-                        if (player.isSuccessFinish) {
-                            add("=RANK($runSumCol$row;$runSumCol$startRow:$runSumCol$endRow; 1)")
+                        if (player.isSuccessFinish && player.isGoodSplit) {
+                            add("=RANK($runSumCol$row;\$$runSumCol\$$startRow:\$$runSumCol\$$endRow; 1)")
                         } else {
                             add("")
                         }
@@ -381,21 +409,20 @@ class GoogleSheetsImporter(
                     }.toTypedArray()
             updateSheet(requests = requests)
         }
-        val gradientRule =
-            GradientRule().apply {
-                minpoint = InterpolationPoint().setType("MIN").setColor(Green)
-                midpoint = InterpolationPoint().setType("PERCENT").setValue("50").setColor(Yellow)
-                maxpoint = InterpolationPoint().setType("MAX").setColor(Red)
-            }
         val requests = mutableListOf<Request>()
         var startRow = firstResultRow
         for (result in results) {
-            val endRow = startRow + result.countSuccessFinish - 1
+            val endRow = startRow + result.players.size - 1
             requests.addAll(
                 (0..<distance.points.size).map {
+                    val minimalSplitValue = result.minimalGoodSplitValue(it)
                     addConditionalFormatRule(
                         listOf(oneColRange(firstSplitColumn + it, startRow, endRow)),
-                        gradientRule,
+                        GradientRule().apply {
+                            minpoint = InterpolationPoint().setType("MIN").setColor(Green)
+                            midpoint = InterpolationPoint().setType("PERCENTILE").setValue("50").setColor(Yellow)
+                            maxpoint = InterpolationPoint().setType("PERCENTILE").setValue("90").setColor(Red)
+                        },
                     )
                 },
             )
@@ -403,7 +430,11 @@ class GoogleSheetsImporter(
                 listOf(techSumColumn, techPercentColumn, techRankColumn, runSumColumn, runPercentColumn, runRankColumn).map {
                     addConditionalFormatRule(
                         listOf(oneColRange(it, startRow, endRow)),
-                        gradientRule,
+                        GradientRule().apply {
+                            minpoint = InterpolationPoint().setType("MIN").setColor(Green)
+                            midpoint = InterpolationPoint().setType("PERCENT").setValue("50").setColor(Yellow)
+                            maxpoint = InterpolationPoint().setType("MAX").setColor(Red)
+                        },
                     )
                 },
             )
