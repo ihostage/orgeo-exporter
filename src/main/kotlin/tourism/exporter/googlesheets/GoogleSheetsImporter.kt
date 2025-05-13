@@ -419,7 +419,7 @@ class GoogleSheetsImporter(
                     addConditionalFormatRule(
                         listOf(oneColRange(firstSplitColumn + it, startRow, endRow)),
                         GradientRule().apply {
-                            minpoint = InterpolationPoint().setType("MIN").setColor(Green)
+                            minpoint = InterpolationPoint().setType("PERCENTILE").setValue("5").setColor(Green)
                             midpoint = InterpolationPoint().setType("PERCENTILE").setValue("50").setColor(Yellow)
                             maxpoint = InterpolationPoint().setType("PERCENTILE").setValue("90").setColor(Red)
                         },

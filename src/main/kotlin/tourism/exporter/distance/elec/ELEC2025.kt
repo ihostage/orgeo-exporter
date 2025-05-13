@@ -84,3 +84,39 @@ val ELEC_25_Long =
             "Кондратьева Алина Сергеевна" to "00:01:23|61|00:02:16|71|00:00:08|62|00:05:53|72|00:12:59|31|00:07:53|32|00:10:37|33|00:01:19|34|00:01:53|32|00:05:53|35|00:03:48|36|00:13:52|63|00:01:26|73|00:02:47|37|00:13:26|38|00:02:43|74|00:02:58|64|00:00:47|65|00:04:34|75|00:08:52|39|00:08:04|40|00:02:05|41|00:02:55|42|00:06:35|66|00:02:04|76|00:07:05|43|00:02:17|44|00:01:00|67|00:02:00|77|00:00:12|FIN|",
         )
     )
+
+val ELEC_25_Long_4 =
+    Distance(
+        name = "Елец дл 07.05.25",
+        orgeoEventId = "43223",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
+        points =
+            listOf(
+                RunPoint(61),
+                TechnicalPoint("||ки", 71, failureCode = 101),
+                RunPoint(62),
+                TechnicalPoint("Дом", 72, failureCode = 102),
+                RunPoint(38),
+                RunPoint(37),
+                RunPoint(32),
+                RunPoint(36),
+                RunPoint(35),
+                RunPoint(63),
+                TechnicalPoint("Бревно", 73, failureCode = 103),
+                RunPoint(31),
+                RunPoint(74),
+                TechnicalPoint("Подъем", 64, failureCode = 104),
+                RunPoint(65),
+                TechnicalPoint("Маятник", 75, failureCode = 105),
+                RunPoint(39),
+                RunPoint(42),
+                RunPoint(66),
+                TechnicalPoint("Спуск", 76, failureCode = 106),
+                RunPoint(43),
+                RunPoint(44),
+                RunPoint(67),
+                TechnicalPoint("Навеска", 77, failureCode = 107),
+                RunPoint("FIN", length = 8000, "000"),
+            )
+    )
