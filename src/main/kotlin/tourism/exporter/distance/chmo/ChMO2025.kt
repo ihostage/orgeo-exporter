@@ -111,3 +111,41 @@ val ChMO_25_Pair_W =
             "Лизунова-Денисова" to "00:01:26|101|00:07:03|102|00:02:55|31|00:02:54|32|00:12:15|33|00:09:21|45|00:09:18|111|00:01:58|112|00:02:47|35|00:08:10|40|00:02:27|37|00:06:37|38|00:10:52|39|00:01:04|121|00:02:29|122|00:07:02|42|00:04:19|43|00:03:43|44|00:02:46|131|00:03:50|132|00:01:01|141|00:01:49|142|"
         )
     )
+
+val ChMO_25_Pair_2 =
+    Distance(
+        name = "ССМО св 2кл 25.05.25",
+        orgeoEventId = "43705",
+        orgeoSubId = "1",
+        orgeoCategories = listOf(
+            "МАЛ" to listOf("м_МАЛ-ДЕВ_2"),
+            "ДЕВЧ" to listOf("ж_МАЛ-ДЕВ_2"),
+            "ЮН" to listOf("м_ЮН-ДЕВ_2"),
+            "ДЕВ" to listOf("ж_ЮН-ДЕВ_2"),
+            "ЮНР" to listOf("м_ЮНР-ЮНРК_2"),
+            "ЮНРК" to listOf("ж_ЮНР-ЮНРК_2")
+        ),
+        points =
+            listOf(
+                RunPoint(141),
+                TechnicalPoint("Бревно", 142, failureCode = 145),
+                RunPoint(31),
+                RunPoint(51),
+                RunPoint(151),
+                TechnicalPoint("Спуск", 152, failureCode = 155),
+                RunPoint(52),
+                RunPoint(53),
+                RunPoint(54),
+                RunPoint(161),
+                TechnicalPoint("Подъём", 162, failureCode = 165),
+                RunPoint(55),
+                RunPoint(56),
+                RunPoint(57),
+                RunPoint(58),
+                RunPoint(171),
+                TechnicalPoint("Навеска", 172, failureCode = 175),
+                RunPoint(-1, length = 3600, "000"),
+            )
+    )
+
+
