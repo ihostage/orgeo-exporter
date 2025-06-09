@@ -148,4 +148,27 @@ val ChMO_25_Pair_2 =
             )
     )
 
-
+val ChMO_25_Sprint_3 =
+    Distance(
+        name = "ПМО лч 24.05.25",
+        orgeoEventId = "43696",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("М" to listOf("ЮНОШИ_3", "ЮНИОРЫ_3"), "Ж" to listOf("ДЕВУШКИ_3", "ЮНИОРКИ_3")),
+        points =
+            listOf(
+                RunPoint(101, 170),
+                TechnicalPoint("Лка", 102, failureCode = 105),
+                RunPoint(111, 240),
+                TechnicalPoint("Навеска", 112, failureCode = 115),
+                RunPoint(121, 400),
+                TechnicalPoint("Подъём", 122, failureCode = 125),
+                RunPoint(31),
+                RunPoint(131, 600),
+                TechnicalPoint("Маятник", 132, failureCode = 135),
+                RunPoint(32),
+                RunPoint(141, 560),
+                TechnicalPoint("Бревно", 142, failureCode = 145),
+                RunPoint(-1, length = 140, "000"),
+            ),
+        fixesSplit = listOf()
+    )

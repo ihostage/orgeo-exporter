@@ -45,5 +45,9 @@ data class Tourist(
             }
 
     val isStarted: Boolean = state != "8"
-    val isRemoved: Boolean = state == "1"
+    val isRemoved: Boolean = listOf(
+        "1", // снят
+        "7", // сошел
+        "21", // неправильная отметка
+    ).contains(state)
 }
