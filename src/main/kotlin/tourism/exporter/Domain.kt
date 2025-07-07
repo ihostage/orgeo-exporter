@@ -34,6 +34,7 @@ data class Distance(
     val orgeoCategories: List<Pair<String, List<String>>>,
     val points: List<DistancePoint>,
     val fixesSplit: List<Pair<String, String>> = listOf(),
+    val seeding: List<Pair<List<String>, List<String>>> = listOf(),
 ) {
     val technicalIndexes: List<Int> =
         points

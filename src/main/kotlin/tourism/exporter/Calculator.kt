@@ -52,6 +52,29 @@ object Calculator {
 
     private fun normalizeTeamName(team: String): String = team.replace("Сборная", "Сб.")
 
+    /**
+     * Обработать рассев
+     */
+    private fun processSeeding(
+        data: List<OrgeoResponse>,
+        distance: Distance,
+    ): List<OrgeoResponse> {
+        data.forEach { response ->
+            distance.seeding.forEach { seeding ->
+                val seedFromGroup = seeding.first.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")
+                val seedToGroup = seeding.second.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")
+                response.participants.forEach { participant ->
+                    val seedRegex = """(.*)${seedFromGroup}(.*)${seedToGroup}(.*)""".toRegex()
+                    val result = seedRegex.find(participant.split)
+                    if (result != null) {
+                        participant.split = result.groupValues[1] + result.groupValues[4] + result.groupValues[3] + result.groupValues[2] + result.groupValues[5]
+                    }
+                }
+            }
+        }
+        return data
+    }
+
     private fun fixData(
         data: List<OrgeoResponse>,
         distance: Distance,
@@ -61,6 +84,6 @@ object Calculator {
                 response.participants.find { it.name == fix.first }?.split = fix.second
             }
         }
-        return data
+        return processSeeding(data, distance)
     }
 }

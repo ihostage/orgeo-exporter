@@ -186,11 +186,11 @@ class GoogleSheetsImporter(
                         },
                     )
                     add("=${distance.technicalIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
-                    add("=${techSumColumn.colName}$row/MIN(${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow)")
+                    add("=${techSumColumn.colName}$row/MINIFS(${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow;${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow;\"<>0\")")
                     add("")
                     if (distance.runIndexes.isNotEmpty()) {
                         add("=${distance.runIndexes.joinToString("+") { "${(firstSplitColumn + it).colName}$row" }}")
-                        add("=${runSumColumn.colName}$row/MIN(${runSumColumn.colName}$startRow:${runSumColumn.colName}$endRow)")
+                        add("=${runSumColumn.colName}$row/MINIFS(${runSumColumn.colName}$startRow:${runSumColumn.colName}$endRow;${techSumColumn.colName}$startRow:${techSumColumn.colName}$endRow;\"<>0\")")
                         add("")
                         add("")
                     } else {

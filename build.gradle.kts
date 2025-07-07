@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "2.2.0"
 }
 
 group = "io.github.ihostage"
@@ -17,8 +17,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
     implementation("com.google.api-client:google-api-client:2.5.0")
     implementation("com.google.oauth-client:google-oauth-client-jetty:1.36.0")
-    implementation("com.google.apis:google-api-services-sheets:v4-rev20250415-2.0.0")
-    implementation("io.grpc:grpc-context:1.72.0")
+    implementation("com.google.apis:google-api-services-sheets:v4-rev20250616-2.0.0")
+    implementation("io.grpc:grpc-context:1.73.0")
     testImplementation(kotlin("test"))
 }
 

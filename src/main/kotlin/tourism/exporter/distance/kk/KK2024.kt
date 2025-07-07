@@ -1,4 +1,4 @@
-package tourism.exporter.distance
+package tourism.exporter.distance.kk
 
 import tourism.exporter.Distance
 import tourism.exporter.RunPoint
