@@ -1,4 +1,4 @@
-package tourism.exporter.distance
+package tourism.exporter.distance.prchr
 
 import tourism.exporter.Distance
 import tourism.exporter.RunPoint
