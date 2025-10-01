@@ -74,5 +74,6 @@ data class Result(
         get() = players.count { it.isSuccessFinish }
 
     fun minimalGoodSplitValue(point: Int): Duration =
-        players.filter { it.isSuccessFinish }.map { it.split[point].time }.filter { it.isPositive() }.min()
+        players.filter { it.isSuccessFinish }.map { it.split[point].time }.filter { it.isPositive() }.minOrNull()
+            ?: throw IllegalArgumentException("Cannot find good split value for $point")
 }
