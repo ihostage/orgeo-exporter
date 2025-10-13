@@ -29,7 +29,7 @@ object Calculator {
                 }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
 
-    private fun parseSplit(
+    internal fun parseSplit(
         tourist: Tourist,
         distance: Distance,
     ): List<DistancePointResult> {
@@ -37,8 +37,17 @@ object Calculator {
         val split =
             distance.points.filter { !it.hasCode("-1") }.map { point ->
                 var duration = Duration.ZERO
-                while (splitIndex < tourist.parsedSplit.size && point.hasCode(tourist.parsedSplit[splitIndex].first)) {
-                    duration = duration.plus(tourist.parsedSplit[splitIndex].second)
+                val parsedSplit = tourist.parsedSplit
+                // Если отметка есть в сплите, суммируем время всех других отметок до неё
+                if (parsedSplit.subList(splitIndex, parsedSplit.size).any { point.hasCode(it.first) }) {
+                    while (!point.hasCode(parsedSplit[splitIndex].first)) {
+                        duration = duration.plus(parsedSplit[splitIndex].second)
+                        splitIndex++
+                    }
+                }
+                // Суммируем время для последовательных повторных отметок в сплите
+                while (splitIndex < parsedSplit.size && point.hasCode(parsedSplit[splitIndex].first)) {
+                    duration = duration.plus(parsedSplit[splitIndex].second)
                     splitIndex++
                 }
                 DistancePointResult(point, duration)

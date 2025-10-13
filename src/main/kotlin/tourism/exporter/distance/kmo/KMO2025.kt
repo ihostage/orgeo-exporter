@@ -171,3 +171,150 @@ val KMO_25_S3_Pair_3 =
                 RunPoint(-1, length = 120, "000"),
             ),
     )
+
+val KMO_25_S4_Pair =
+    Distance(
+        name = "КМО св сп 11.10.25",
+        orgeoEventId = "46786",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ_4 класс", "ЮНИОРЫ_4 класс"), "Ж" to listOf("ЖЕНЩИНЫ_4 класс", "ЮНИОРКИ_4 класс")),
+        points =
+            listOf(
+                RunPoint(101, 50),
+                TechnicalPoint("Дом", 102, failureCode = 105),
+                RunPoint(111, 180),
+                TechnicalPoint("||ки", 112, failureCode = 115),
+                RunPoint(31),
+                RunPoint(121, 340),
+                TechnicalPoint("Бревно", 122, failureCode = 125),
+                RunPoint(32),
+                RunPoint(131, 320),
+                TechnicalPoint("Лка", 132, failureCode = 135),
+                RunPoint(141, 150),
+                TechnicalPoint("Спуск", 142, failureCode = 145),
+                RunPoint(151, 70),
+                TechnicalPoint("Подъём", 152, failureCode = 155),
+                RunPoint(-1, length = 15, "000"),
+            ),
+    )
+
+val KMO_25_S4_Pair_3 =
+    Distance(
+        name = "КМО св 3кл 11.10.25",
+        orgeoEventId = "46786",
+        orgeoSubId = "1",
+        orgeoCategories = listOf(
+            "М" to listOf("ЮНИОРЫ_3 класс", "ЮНОШИ_3 класс"),
+            "Ж" to listOf("ДЕВУШКИ_3 класс", "ЖЕНЩИНЫ_3 класс", "ЮНИОРКИ_3 класс")
+        ),
+        points =
+            listOf(
+                RunPoint(101, 50),
+                TechnicalPoint("Лка", 102, failureCode = 105),
+                RunPoint(111, 180),
+                TechnicalPoint("||ки", 112, failureCode = 115),
+                RunPoint(31),
+                RunPoint(121, 340),
+                TechnicalPoint("Бревно", 122, failureCode = 125),
+                RunPoint(32),
+                RunPoint(131, 320),
+                TechnicalPoint("Маятник", 132, failureCode = 135),
+                RunPoint(141, 150),
+                TechnicalPoint("Спуск", 142, failureCode = 145),
+                RunPoint(151, 70),
+                TechnicalPoint("Спуск", 152, failureCode = 155),
+                RunPoint(-1, length = 15, "000"),
+            ),
+    )
+
+val KMO_25_S4_Long_M =
+    Distance(
+        name = "КМО лч дл М 12.10.25",
+        orgeoEventId = "46788",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("М" to listOf("4_Юниоры", "4_Мужчины")),
+        points =
+            listOf(
+                RunPoint(101),
+                TechnicalPoint("Дом", 102, failureCode = 105),
+                RunPoint(49),
+                RunPoint(42),
+                RunPoint(33),
+                RunPoint(111),
+                TechnicalPoint("||ки", 112, failureCode = 115),
+                RunPoint(121),
+                TechnicalPoint("Бревно", 122, failureCode = 125),
+                RunPoint(48),
+                RunPoint(39),
+                RunPoint(37),
+                RunPoint(141),
+                TechnicalPoint("Спуск", 142, failureCode = 145),
+                RunPoint(44),
+                RunPoint(46),
+                RunPoint(41),
+                RunPoint(131),
+                TechnicalPoint("Лка", 132, failureCode = 135),
+                RunPoint(-1, length = 7200, "000"),
+            ),
+    )
+
+val KMO_25_S4_Long_W =
+    Distance(
+        name = "КМО лч дл Ж 12.10.25",
+        orgeoEventId = "46788",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("Ж" to listOf("4_Женщины", "4_Юниорки")),
+        points =
+            listOf(
+                RunPoint(101),
+                TechnicalPoint("Дом", 102, failureCode = 105),
+                RunPoint(49),
+                RunPoint(40),
+                RunPoint(33),
+                RunPoint(111),
+                TechnicalPoint("||ки", 112, failureCode = 115),
+                RunPoint(121),
+                TechnicalPoint("Бревно", 122, failureCode = 125),
+                RunPoint(48),
+                RunPoint(39),
+                RunPoint(38),
+                RunPoint(141),
+                TechnicalPoint("Спуск", 142, failureCode = 145),
+                RunPoint(43),
+                RunPoint(46),
+                RunPoint(41),
+                RunPoint(131),
+                TechnicalPoint("Лка", 132, failureCode = 135),
+                RunPoint(-1, length = 6400, "000"),
+            ),
+    )
+
+val KMO_25_S4_Long_3 =
+    Distance(
+        name = "КМО лч дл 3л 12.10.25",
+        orgeoEventId = "46788",
+        orgeoSubId = "1",
+        orgeoCategories = listOf("М" to listOf("3_Юноши"), "Ж" to listOf("3_Девушки")),
+        points =
+            listOf(
+                RunPoint(101),
+                TechnicalPoint("Лка", 102, failureCode = 105),
+                RunPoint(48),
+                RunPoint(40),
+                RunPoint(33),
+                RunPoint(111),
+                TechnicalPoint("||ки", 112, failureCode = 115),
+                RunPoint(121),
+                TechnicalPoint("Бревно", 122, failureCode = 125),
+                RunPoint(46),
+                RunPoint(47),
+                RunPoint(38),
+                RunPoint(141),
+                TechnicalPoint("Спуск", 142, failureCode = 145),
+                RunPoint(42),
+                RunPoint(41),
+                RunPoint(131),
+                TechnicalPoint("Маятник", 132, failureCode = 135),
+                RunPoint(-1, length = 5200, "000"),
+            ),
+    )
