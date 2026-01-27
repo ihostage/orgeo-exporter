@@ -16,7 +16,7 @@ object Calculator {
             name,
             fixData(data, distance)
                 .flatMap { it.participants }
-                .filter { it.isStarted }
+                .filter { it.isStarted && it.hasSplit }
                 .map { p ->
                     Player(
                         p.place,

@@ -50,4 +50,6 @@ data class Tourist(
         "7", // сошел
         "21", // неправильная отметка
     ).contains(state)
+
+    val hasSplit: Boolean = split.isNotBlank()
 }
