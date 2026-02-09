@@ -9,7 +9,7 @@ val ChR25Spring =
         name = "ЧР лч 25.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(21, 100),
@@ -40,7 +40,7 @@ val ChR25PairSpring =
         name = "ЧР св сп 26.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "6",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(21, 100),
@@ -66,7 +66,7 @@ val ChR25PairM =
         name = "ЧР св дл М 27.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "8",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ")),
         points =
             listOf(
                 RunPoint(21),
@@ -116,7 +116,7 @@ val ChR25PairW =
         name = "ЧР св дл Ж 27.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "8",
-        orgeoCategories = listOf("Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(21),
@@ -161,7 +161,7 @@ val ChR25GroupM =
         name = "ЧР гр М 28.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "9",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ")),
         points =
             listOf(
                 RunPoint(21),
@@ -202,7 +202,7 @@ val ChR25GroupW =
         name = "ЧР гр Ж 28.08.25",
         orgeoEventId = "45073",
         orgeoSubId = "9",
-        orgeoCategories = listOf("Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(21),
@@ -240,7 +240,7 @@ val PR25Spring3 =
         name = "ПР лч 3кл 22.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
+        categories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
         points =
             listOf(
                 RunPoint(61, 100),
@@ -264,7 +264,7 @@ val PR25Spring4 =
         name = "ПР лч 4кл 22.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("4_ЮНР"), "Ж" to listOf("4_ЮНРК")),
+        categories = listOf("М" to listOf("4_ЮНР"), "Ж" to listOf("4_ЮНРК")),
         points =
             listOf(
                 RunPoint(61, 100),
@@ -290,7 +290,7 @@ val PR25Pair3 =
         name = "ПР св 3кл 21.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("м_ЮН-ДЕВ"), "Ж" to listOf("ж_ЮН-ДЕВ")),
+        categories = listOf("М" to listOf("м_ЮН-ДЕВ"), "Ж" to listOf("ж_ЮН-ДЕВ")),
         points =
             listOf(
                 RunPoint(61, 100),
@@ -314,7 +314,7 @@ val PR25Pair4 =
         name = "ПР св 4кл 21.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("м_ЮНР-ЮН"), "Ж" to listOf("ж_ЮНР-ЮН")),
+        categories = listOf("М" to listOf("м_ЮНР-ЮН"), "Ж" to listOf("ж_ЮНР-ЮН")),
         points =
             listOf(
                 RunPoint(61, 100),
@@ -340,7 +340,7 @@ val PR25Group3 =
         name = "ПР гр 3кл 23.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
+        categories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
         points =
             listOf(
                 RunPoint(61),
@@ -371,7 +371,7 @@ val PR25Group4M =
         name = "ПР гр 4кл М 23.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("4_ЮНР")),
+        categories = listOf("М" to listOf("4_ЮНР")),
         points =
             listOf(
                 RunPoint(61),
@@ -409,7 +409,7 @@ val PR25Group4W =
         name = "ПР гр 4кл Ж 23.08.25",
         orgeoEventId = "45072",
         orgeoSubId = "5",
-        orgeoCategories = listOf("Ж" to listOf("4_ЮНРК")),
+        categories = listOf("Ж" to listOf("4_ЮНРК")),
         points =
             listOf(
                 RunPoint(61),

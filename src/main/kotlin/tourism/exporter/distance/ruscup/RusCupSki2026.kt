@@ -9,7 +9,7 @@ val RusCup26Ski =
         name = "КР лыж лч кр 23.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(41),
@@ -32,7 +32,7 @@ val RusCup26SkiLong =
         name = "КР лыж лч дл 24.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ"), "Ж" to listOf("ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(41),
@@ -58,7 +58,7 @@ val RusCup26SkiPair =
         name = "КР лыж св 25.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(41),
@@ -84,7 +84,7 @@ val RusCup26Ski4 =
         name = "КР лыж лч кр 23.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("ЮНИОРЫ"), "Ж" to listOf("ЮНИОРКИ")),
+        categories = listOf("М" to listOf("ЮНИОРЫ"), "Ж" to listOf("ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(41),
@@ -107,7 +107,7 @@ val RusCup26SkiLong4 =
         name = "КР лыж лч дл 24.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("ЮНИОРЫ"), "Ж" to listOf("ЮНИОРКИ")),
+        categories = listOf("М" to listOf("ЮНИОРЫ"), "Ж" to listOf("ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(41),
@@ -130,7 +130,7 @@ val RusCup26SkiPair4 =
         name = "КР лыж св 25.01.26",
         orgeoEventId = "48831",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
+        categories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(41),

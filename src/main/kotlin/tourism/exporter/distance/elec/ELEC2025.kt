@@ -9,7 +9,7 @@ val ELEC_25_Long =
         name = "Елец дл 07.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(61),
@@ -90,7 +90,7 @@ val ELEC_25_Long_4 =
         name = "Елец дл 07.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
+        categories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(61),
@@ -126,7 +126,7 @@ val ELEC_25_Short =
         name = "Елец кр 08.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(61, length = 300),
@@ -160,7 +160,7 @@ val ELEC_25_Short_4 =
         name = "Елец кр 08.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
+        categories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(61, length = 300),
@@ -189,7 +189,7 @@ val ELEC_25_Spring =
         name = "Елец сп 09.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
+        categories = listOf("М" to listOf("5_МУЖЧИНЫ"), "Ж" to listOf("5_ЖЕНЩИНЫ")),
         points =
             listOf(
                 RunPoint(61, length = 300),
@@ -225,7 +225,7 @@ val ELEC_25_Spring_4 =
         name = "Елец сп 09.05.25",
         orgeoEventId = "43223",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
+        categories = listOf("М" to listOf("4_ЮНИОРЫ"), "Ж" to listOf("4_ЮНИОРКИ")),
         points =
             listOf(
                 RunPoint(61, length = 300),

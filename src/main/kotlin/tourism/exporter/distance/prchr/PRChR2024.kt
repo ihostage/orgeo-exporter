@@ -9,7 +9,7 @@ val PR24Pair4 =
         name = "ПР св 4кл 04.07.24",
         orgeoEventId = "36593",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("ЮНР"), "Ж" to listOf("ЮНРК")),
+        categories = listOf("М" to listOf("ЮНР"), "Ж" to listOf("ЮНРК")),
         points =
             listOf(
                 RunPoint(61, 440),
@@ -36,7 +36,7 @@ val ChR24PairM =
         name = "ЧР св М 03.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("Мужчины")),
+        categories = listOf("М" to listOf("Мужчины")),
         points =
             listOf(
                 RunPoint(101, 90),
@@ -65,7 +65,7 @@ val ChR24PairW =
         name = "ЧР св Ж 03.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "5",
-        orgeoCategories = listOf("Ж" to listOf("Женщины")),
+        categories = listOf("Ж" to listOf("Женщины")),
         points =
             listOf(
                 RunPoint(101, 90),
@@ -91,7 +91,7 @@ val ChR24M =
         name = "ЧР М 04.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "6",
-        orgeoCategories = listOf("М" to listOf("Мужчины")),
+        categories = listOf("М" to listOf("Мужчины")),
         points =
             listOf(
                 RunPoint(101, 90),
@@ -120,7 +120,7 @@ val ChR24W =
         name = "ЧР Ж 03.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "6",
-        orgeoCategories = listOf("Ж" to listOf("Женщины")),
+        categories = listOf("Ж" to listOf("Женщины")),
         points =
             listOf(
                 RunPoint(101, 90),
@@ -146,7 +146,7 @@ val ChR24GroupM =
         name = "ЧР гр М 06.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "8",
-        orgeoCategories = listOf("М" to listOf("Мужчины")),
+        categories = listOf("М" to listOf("Мужчины")),
         points =
             listOf(
                 RunPoint(61),
@@ -190,7 +190,7 @@ val ChR24GroupW =
         name = "ЧР гр Ж 06.09.24",
         orgeoEventId = "36737",
         orgeoSubId = "8",
-        orgeoCategories = listOf("Ж" to listOf("Женщины")),
+        categories = listOf("Ж" to listOf("Женщины")),
         points =
             listOf(
                 RunPoint(61),

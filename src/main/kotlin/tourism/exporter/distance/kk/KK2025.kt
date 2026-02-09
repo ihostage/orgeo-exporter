@@ -9,7 +9,7 @@ val KK25Pair =
         name = "КК св 03.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("МУЖ_5"), "Ж" to listOf("ЖЕН_5")),
+        categories = listOf("М" to listOf("МУЖ_5"), "Ж" to listOf("ЖЕН_5")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -34,7 +34,7 @@ val KK25Short =
         name = "КК лч кор 04.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("5_МУЖ"), "Ж" to listOf("5_ЖЕН")),
+        categories = listOf("М" to listOf("5_МУЖ"), "Ж" to listOf("5_ЖЕН")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -59,7 +59,7 @@ val KK25LongM =
         name = "КК лч дл М 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("5_МУЖ")),
+        categories = listOf("М" to listOf("5_МУЖ")),
         points =
             listOf(
                 RunPoint(62),
@@ -103,7 +103,7 @@ val KK25LongW =
         name = "КК лч дл Ж 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("5_ЖЕН")),
+        categories = listOf("Ж" to listOf("5_ЖЕН")),
         points =
             listOf(
                 RunPoint(62),
@@ -145,7 +145,7 @@ val KK25GroupM =
         name = "КК гр дл М 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("5_МУЖ")),
+        categories = listOf("М" to listOf("5_МУЖ")),
         points =
             listOf(
                 RunPoint(67),
@@ -188,7 +188,7 @@ val KK25GroupW =
         name = "КК гр дл Ж 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("5_ЖЕН")),
+        categories = listOf("Ж" to listOf("5_ЖЕН")),
         points =
             listOf(
                 RunPoint(67),
@@ -230,7 +230,7 @@ val KK25Pair4 =
         name = "КК св 4кл 03.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("ЮНР_4"), "Ж" to listOf("ЮНРК_4")),
+        categories = listOf("М" to listOf("ЮНР_4"), "Ж" to listOf("ЮНРК_4")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -255,7 +255,7 @@ val KK25Short4 =
         name = "КК лч кор 4кл 04.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("4_ЮНР"), "Ж" to listOf("4_ЮНРК")),
+        categories = listOf("М" to listOf("4_ЮНР"), "Ж" to listOf("4_ЮНРК")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -280,7 +280,7 @@ val KK25Long4M =
         name = "КК лч дл 4кл М 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("4_ЮНР")),
+        categories = listOf("М" to listOf("4_ЮНР")),
         points =
             listOf(
                 RunPoint(62),
@@ -317,7 +317,7 @@ val KK25Long4W =
         name = "КК лч дл 4кл Ж 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("4_ЮНРК")),
+        categories = listOf("Ж" to listOf("4_ЮНРК")),
         points =
             listOf(
                 RunPoint(62),
@@ -352,7 +352,7 @@ val KK25Group4M =
         name = "КК гр дл 4кл М 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("4_ЮНР")),
+        categories = listOf("М" to listOf("4_ЮНР")),
         points =
             listOf(
                 RunPoint(51),
@@ -389,7 +389,7 @@ val KK25Group4W =
         name = "КК гр дл 4кл Ж 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("4_ЮНРК")),
+        categories = listOf("Ж" to listOf("4_ЮНРК")),
         points =
             listOf(
                 RunPoint(51),
@@ -423,7 +423,7 @@ val KK25Pair3 =
         name = "КК св 3кл 03.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("ЮН_3"), "Ж" to listOf("ДЕВ_3")),
+        categories = listOf("М" to listOf("ЮН_3"), "Ж" to listOf("ДЕВ_3")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -448,7 +448,7 @@ val KK25Short3 =
         name = "КК лч кор 3кл 04.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
+        categories = listOf("М" to listOf("3_ЮН"), "Ж" to listOf("3_ДЕВ")),
         points =
             listOf(
                 RunPoint(61, 70),
@@ -473,7 +473,7 @@ val KK25Long3M =
         name = "КК лч дл 3кл М 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("3_ЮН")),
+        categories = listOf("М" to listOf("3_ЮН")),
         points =
             listOf(
                 RunPoint(51),
@@ -506,7 +506,7 @@ val KK25Long3W =
         name = "КК лч дл 3кл Ж 05.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("3_ДЕВ")),
+        categories = listOf("Ж" to listOf("3_ДЕВ")),
         points =
             listOf(
                 RunPoint(51),
@@ -539,7 +539,7 @@ val KK25Group3M =
         name = "КК гр дл 3кл М 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("3_ЮН")),
+        categories = listOf("М" to listOf("3_ЮН")),
         points =
             listOf(
                 RunPoint(65, 440),
@@ -568,7 +568,7 @@ val KK25Group3W =
         name = "КК гр дл 3кл Ж 06.07.25",
         orgeoEventId = "44488",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("3_ДЕВ")),
+        categories = listOf("Ж" to listOf("3_ДЕВ")),
         points =
             listOf(
                 RunPoint(65, 440),

@@ -29,9 +29,10 @@ data class TechnicalPoint(
 
 data class Distance(
     val name: String,
-    val orgeoEventId: String,
-    val orgeoSubId: String,
-    val orgeoCategories: List<Pair<String, List<String>>>,
+    val orgeoEventId: String? = null,
+    val orgeoSubId: String? = null,
+    val sportOrgFilePath: String? = null,
+    val categories: List<Pair<String, List<String>>>,
     val points: List<DistancePoint>,
     val fixesSplit: List<Pair<String, String>> = listOf(),
     val seeding: List<Pair<List<String>, List<String>>> = listOf(),

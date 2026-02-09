@@ -1,12 +1,41 @@
 package tourism.exporter
 
 import tourism.exporter.orgeo.OrgeoResponse
-import tourism.exporter.orgeo.Tourist
+import tourism.exporter.sportorg.SportOrgParser
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
 object Calculator {
+
+    fun processSportOrgData(
+        name: String,
+        groupNames: List<String>,
+        distance: Distance,
+    ): Result {
+        val data = SportOrgParser.parse(distance.sportOrgFilePath!!).races[0]
+        val groups = data.groups.filter { groupNames.contains(it.name) }
+        val persons = data.persons.filter { person -> groups.any { it.id == person.groupId } }
+        val results = data.results.filter { result -> persons.any { it.id == result.personId } }
+        val players: List<Player> = results.map { result ->
+            val person = persons.find { it.id == result.personId }!!
+            val finishDuration = (result.finishTime - result.startTime).milliseconds
+            Player(
+                place = result.place!!,
+                name = "${person.surname} ${person.name}",
+                team = normalizeTeamName(data.organizations.find { it.id == person.organizationId }!!.name),
+                result = finishDuration,
+                split = parseSplit(result.splits.map { it.code to it.legTime.milliseconds }, finishDuration, distance),
+                isSuccessFinish = result.status == 1
+            )
+        }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE }
+        return Result(
+            name,
+            players
+        )
+    }
+
     fun processOrgeoData(
         name: String,
         data: List<OrgeoResponse>,
@@ -23,21 +52,21 @@ object Calculator {
                         p.name,
                         normalizeTeamName(p.team),
                         p.finishDuration,
-                        parseSplit(p, distance),
+                        parseSplit(p.parsedSplit, p.finishDuration, distance),
                         p.isStarted && !p.isRemoved
                     )
                 }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
 
     internal fun parseSplit(
-        tourist: Tourist,
+        parsedSplit: List<Pair<String, Duration>>,
+        finishDuration: Duration,
         distance: Distance,
     ): List<DistancePointResult> {
         var splitIndex = 0
         val split =
             distance.points.filter { !it.hasCode("-1") }.map { point ->
                 var duration = Duration.ZERO
-                val parsedSplit = tourist.parsedSplit
                 // Если отметка есть в сплите, суммируем время всех других отметок до неё
                 if (parsedSplit.subList(splitIndex, parsedSplit.size).any { point.hasCode(it.first) }) {
                     while (!point.hasCode(parsedSplit[splitIndex].first)) {
@@ -55,7 +84,7 @@ object Calculator {
         if (split.size == distance.points.size) {
             return split
         }
-        val finish: Duration = tourist.finishDuration.minus(split.sumOf { it.time.inWholeMilliseconds }.toDuration(MILLISECONDS))
+        val finish: Duration = finishDuration.minus(split.sumOf { it.time.inWholeMilliseconds }.toDuration(MILLISECONDS))
         return split.plus(DistancePointResult(distance.points.last(), finish))
     }
 
@@ -76,7 +105,8 @@ object Calculator {
                     val seedRegex = """(.*)${seedFromGroup}(.*)${seedToGroup}(.*)""".toRegex()
                     val result = seedRegex.find(participant.split)
                     if (result != null) {
-                        participant.split = result.groupValues[1] + result.groupValues[4] + result.groupValues[3] + result.groupValues[2] + result.groupValues[5]
+                        participant.split =
+                            result.groupValues[1] + result.groupValues[4] + result.groupValues[3] + result.groupValues[2] + result.groupValues[5]
                     }
                 }
             }

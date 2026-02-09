@@ -9,7 +9,7 @@ val KK24Pair =
         name = "КК св 04.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -37,7 +37,7 @@ val KK24Pair4 =
         name = "КК св 4кл 04.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("4_юниоры"), "Ж" to listOf("4_юниорки")),
+        categories = listOf("М" to listOf("4_юниоры"), "Ж" to listOf("4_юниорки")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -64,7 +64,7 @@ val KK24Pair3 =
         name = "КК св 3кл 04.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
+        categories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -89,7 +89,7 @@ val KK24Short =
         name = "КК лич кор 05.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -117,7 +117,7 @@ val KK24Short4 =
         name = "КК лич кор 4кл 05.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("4_юниоры"), "Ж" to listOf("4_юниорки")),
+        categories = listOf("М" to listOf("4_юниоры"), "Ж" to listOf("4_юниорки")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -144,7 +144,7 @@ val KK24Short3 =
         name = "КК лич кор 3кл 05.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
+        categories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
         points =
             listOf(
                 RunPoint(101, 360),
@@ -169,7 +169,7 @@ val KK24LongM =
         name = "КК лич дл М 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("5_мужчины")),
+        categories = listOf("М" to listOf("5_мужчины")),
         points =
             listOf(
                 RunPoint(100),
@@ -210,7 +210,7 @@ val KK24LongW =
         name = "КК лич дл Ж 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("5_женщины")),
+        categories = listOf("Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(100),
@@ -246,7 +246,7 @@ val KK24LongM3 =
         name = "КК лич дл М 3кл 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("3_юноши")),
+        categories = listOf("М" to listOf("3_юноши")),
         points =
             listOf(
                 RunPoint(100),
@@ -284,7 +284,7 @@ val KK24LongW3 =
         name = "КК лич дл Ж 3кл 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("3_девушки")),
+        categories = listOf("Ж" to listOf("3_девушки")),
         points =
             listOf(
                 RunPoint(100),
@@ -316,7 +316,7 @@ val KK24LongM4 =
         name = "КК лич дл М 4кл 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("4_юниоры")),
+        categories = listOf("М" to listOf("4_юниоры")),
         points =
             listOf(
                 RunPoint(100),
@@ -354,7 +354,7 @@ val KK24LongW4 =
         name = "КК лич дл Ж 4кл 06.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("4_юниорки")),
+        categories = listOf("Ж" to listOf("4_юниорки")),
         points =
             listOf(
                 RunPoint(100),
@@ -387,7 +387,7 @@ val KK24TeamM =
         name = "КК гр М 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("5_мужчины")),
+        categories = listOf("М" to listOf("5_мужчины")),
         points =
             listOf(
                 RunPoint(100),
@@ -423,7 +423,7 @@ val KK24TeamW =
         name = "КК гр Ж 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("5_женщины")),
+        categories = listOf("Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(100),
@@ -456,7 +456,7 @@ val KK24TeamM4 =
         name = "КК гр М 4кл 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("4_юниоры")),
+        categories = listOf("М" to listOf("4_юниоры")),
         points =
             listOf(
                 RunPoint(100),
@@ -489,7 +489,7 @@ val KK24TeamW4 =
         name = "КК гр Ж 4кл 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("4_юниорки")),
+        categories = listOf("Ж" to listOf("4_юниорки")),
         points =
             listOf(
                 RunPoint(100),
@@ -518,7 +518,7 @@ val KK24TeamM3 =
         name = "КК гр М 3кл 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("М" to listOf("3_юноши")),
+        categories = listOf("М" to listOf("3_юноши")),
         points =
             listOf(
                 RunPoint(100),
@@ -548,7 +548,7 @@ val KK24TeamW3 =
         name = "КК гр Ж 3кл 07.07.24",
         orgeoEventId = "36129",
         orgeoSubId = "4",
-        orgeoCategories = listOf("Ж" to listOf("3_девушки")),
+        categories = listOf("Ж" to listOf("3_девушки")),
         points =
             listOf(
                 RunPoint(100),

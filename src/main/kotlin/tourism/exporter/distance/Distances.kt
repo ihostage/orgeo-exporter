@@ -9,7 +9,7 @@ val Elec2024Short =
         name = "ВС5 лич кор 08.05.24",
         orgeoEventId = "34974",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 TechnicalPoint("ВСС", 61, failureCode = 161),
@@ -28,7 +28,7 @@ val Elec2024Sprint =
         name = "ВС5 лич спр 09.05.24",
         orgeoEventId = "34974",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 TechnicalPoint("ВСС", 61, failureCode = 161),
@@ -47,7 +47,7 @@ val CHiPMO2024Pair =
         name = "ЧМО св кор 25.05.24",
         orgeoEventId = "35750",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ_4", "ЮНИОРЫ_4"), "Ж" to listOf("ЖЕНЩИНЫ_4", "ЮНИОРКИ_4")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ_4", "ЮНИОРЫ_4"), "Ж" to listOf("ЖЕНЩИНЫ_4", "ЮНИОРКИ_4")),
         points =
             listOf(
                 RunPoint(101, length = 180),
@@ -70,7 +70,7 @@ val CHiPMO2024LongM =
         name = "ЧМО лич дл М 26.05.24",
         orgeoEventId = "35750",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("Мужчины 4 класс", "Юниоры 4 класс")),
+        categories = listOf("М" to listOf("Мужчины 4 класс", "Юниоры 4 класс")),
         points =
             listOf(
                 RunPoint(40),
@@ -103,7 +103,7 @@ val CHiPMO2024LongW =
         name = "ЧМО лич дл Ж 26.05.24",
         orgeoEventId = "35750",
         orgeoSubId = "3",
-        orgeoCategories = listOf("Ж" to listOf("Женщины 4 класс", "Юниорки 4 класс")),
+        categories = listOf("Ж" to listOf("Женщины 4 класс", "Юниорки 4 класс")),
         points =
         listOf(
             RunPoint(44),

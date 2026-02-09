@@ -9,7 +9,7 @@ val G4_24_5M =
         name = "Г4 5кл М 19.10.24",
         orgeoEventId = "37943",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("5_МУЖЧИНЫ")),
+        categories = listOf("М" to listOf("5_МУЖЧИНЫ")),
         points =
         listOf(
             RunPoint(39),
@@ -50,7 +50,7 @@ val G4_24_5W =
         name = "Г4 5кл Ж 19.10.24",
         orgeoEventId = "37943",
         orgeoSubId = "1",
-        orgeoCategories = listOf("Ж" to listOf("5_ЖЕНЩИНЫ")),
+        categories = listOf("Ж" to listOf("5_ЖЕНЩИНЫ")),
         points =
         listOf(
             RunPoint(84),
@@ -85,7 +85,7 @@ val G4_24_4M =
         name = "Г4 4кл М 20.10.24",
         orgeoEventId = "37943",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("4_МУЖЧИНЫ")),
+        categories = listOf("М" to listOf("4_МУЖЧИНЫ")),
         points =
             listOf(
                 TechnicalPoint("Лка", 172, failureCode = 192),
@@ -117,7 +117,7 @@ val G4_24_4W =
         name = "Г4 4кл Ж 20.10.24",
         orgeoEventId = "37943",
         orgeoSubId = "2",
-        orgeoCategories = listOf("Ж" to listOf("4_ЖЕНЩИНЫ")),
+        categories = listOf("Ж" to listOf("4_ЖЕНЩИНЫ")),
         points =
         listOf(
             TechnicalPoint("Лка", 172, failureCode = 192),

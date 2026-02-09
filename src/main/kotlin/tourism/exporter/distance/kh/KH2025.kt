@@ -9,7 +9,7 @@ val KH25Short =
         name = "КХ лч 03.10.25",
         orgeoEventId = "45478",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("5-мужчины"), "Ж" to listOf("5-женщины")),
+        categories = listOf("М" to listOf("5-мужчины"), "Ж" to listOf("5-женщины")),
         points =
             listOf(
                 RunPoint(61, 380),
@@ -33,7 +33,7 @@ val KH25PairM =
         name = "КХ св М 04.10.25",
         orgeoEventId = "45478",
         orgeoSubId = "5",
-        orgeoCategories = listOf("М" to listOf("5_мужчины")),
+        categories = listOf("М" to listOf("5_мужчины")),
         points =
             listOf(
                 RunPoint(31),
@@ -75,7 +75,7 @@ val KH25PairW =
         name = "КХ св Ж 04.10.25",
         orgeoEventId = "45478",
         orgeoSubId = "5",
-        orgeoCategories = listOf("Ж" to listOf("5_женщины")),
+        categories = listOf("Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(38),
@@ -111,7 +111,7 @@ val KH25Group =
         name = "КХ гр 05.10.25",
         orgeoEventId = "45478",
         orgeoSubId = "3",
-        orgeoCategories = listOf("М" to listOf("5-мужчины"), "Ж" to listOf("5-женщины")),
+        categories = listOf("М" to listOf("5-мужчины"), "Ж" to listOf("5-женщины")),
         points =
             listOf(
                 RunPoint(61, 380),

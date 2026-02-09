@@ -9,7 +9,7 @@ val ChMO_25_Sprint =
         name = "ЧМО лч 24.05.25",
         orgeoEventId = "43696",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("МУЖЧИНЫ_4", "ЮНИОРЫ_4"), "Ж" to listOf("ЖЕНЩИНЫ_4", "ЮНИОРКИ_4")),
+        categories = listOf("М" to listOf("МУЖЧИНЫ_4", "ЮНИОРЫ_4"), "Ж" to listOf("ЖЕНЩИНЫ_4", "ЮНИОРКИ_4")),
         points =
             listOf(
                 RunPoint(101, 170),
@@ -39,7 +39,7 @@ val ChMO_25_Pair_M =
         name = "ЧМО св м 25.05.25",
         orgeoEventId = "43705",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("м_М-Ж_4", "м_ЮНР-ЮНРК_4")),// "Ж" to listOf("ж_М-Ж_4", "ж_ЮНР-ЮНРК_4")),
+        categories = listOf("М" to listOf("м_М-Ж_4", "м_ЮНР-ЮНРК_4")),// "Ж" to listOf("ж_М-Ж_4", "ж_ЮНР-ЮНРК_4")),
         points =
             listOf(
                 RunPoint(101),
@@ -79,7 +79,7 @@ val ChMO_25_Pair_W =
         name = "ЧМО св ж 25.05.25",
         orgeoEventId = "43705",
         orgeoSubId = "1",
-        orgeoCategories = listOf("Ж" to listOf("ж_М-Ж_4", "ж_ЮНР-ЮНРК_4")),
+        categories = listOf("Ж" to listOf("ж_М-Ж_4", "ж_ЮНР-ЮНРК_4")),
         points =
             listOf(
                 RunPoint(101),
@@ -117,7 +117,7 @@ val ChMO_25_Pair_2 =
         name = "ССМО св 2кл 25.05.25",
         orgeoEventId = "43705",
         orgeoSubId = "1",
-        orgeoCategories = listOf(
+        categories = listOf(
             "МАЛ" to listOf("м_МАЛ-ДЕВ_2"),
             "ДЕВЧ" to listOf("ж_МАЛ-ДЕВ_2"),
             "ЮН" to listOf("м_ЮН-ДЕВ_2"),
@@ -153,7 +153,7 @@ val ChMO_25_Sprint_3 =
         name = "ПМО лч 24.05.25",
         orgeoEventId = "43696",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("ЮНОШИ_3", "ЮНИОРЫ_3"), "Ж" to listOf("ДЕВУШКИ_3", "ЮНИОРКИ_3")),
+        categories = listOf("М" to listOf("ЮНОШИ_3", "ЮНИОРЫ_3"), "Ж" to listOf("ДЕВУШКИ_3", "ЮНИОРКИ_3")),
         points =
             listOf(
                 RunPoint(101, 170),

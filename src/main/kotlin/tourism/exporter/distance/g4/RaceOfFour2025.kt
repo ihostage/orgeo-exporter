@@ -9,7 +9,7 @@ val G4_25_5M =
         name = "Г4 5кл М 20.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("5_Мужчины")),
+        categories = listOf("М" to listOf("5_Мужчины")),
         points =
         listOf(
             RunPoint(83),
@@ -50,7 +50,7 @@ val G4_25_5W =
         name = "Г4 5кл Ж 20.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "1",
-        orgeoCategories = listOf("Ж" to listOf("5_Женщины")),
+        categories = listOf("Ж" to listOf("5_Женщины")),
         points =
         listOf(
             RunPoint(83),
@@ -86,7 +86,7 @@ val G4_25_4M =
         name = "Г4 4кл М 20.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("4_Мужчины")),
+        categories = listOf("М" to listOf("4_Мужчины")),
         points =
             listOf(
                 RunPoint(87),
@@ -117,7 +117,7 @@ val G4_25_4M_2day =
         name = "Г4 4кл М 21.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("4_Мужчины")),
+        categories = listOf("М" to listOf("4_Мужчины")),
         points =
             listOf(
                 TechnicalPoint("Дом", 103, failureCode = 233),
@@ -156,7 +156,7 @@ val G4_25_4W =
         name = "Г4 4кл Ж 20.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "1",
-        orgeoCategories = listOf("Ж" to listOf("4_Женщины")),
+        categories = listOf("Ж" to listOf("4_Женщины")),
         points =
             listOf(
                 RunPoint(84),
@@ -187,7 +187,7 @@ val G4_25_4W_2day =
         name = "Г4 4кл Ж 21.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "2",
-        orgeoCategories = listOf("Ж" to listOf("4_Женщины")),
+        categories = listOf("Ж" to listOf("4_Женщины")),
         points =
             listOf(
                 TechnicalPoint("Дом", 103, failureCode = 233),
@@ -217,7 +217,7 @@ val G4_25_3 =
         name = "Г4 3кл 20.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("3_Юноши"), "Ж" to listOf("3_Девушки")),
+        categories = listOf("М" to listOf("3_Юноши"), "Ж" to listOf("3_Девушки")),
         points =
             listOf(
                 RunPoint(109),
@@ -243,7 +243,7 @@ val G4_25_3_2day =
         name = "Г4 3кл 21.09.25",
         orgeoEventId = "45796",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
+        categories = listOf("М" to listOf("3_юноши"), "Ж" to listOf("3_девушки")),
         points =
             listOf(
                 RunPoint(53),

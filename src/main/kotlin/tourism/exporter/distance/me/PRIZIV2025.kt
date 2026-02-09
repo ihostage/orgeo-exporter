@@ -9,7 +9,7 @@ val ME_25_Sprint =
         name = "МЭ лч сп 02.05.25",
         orgeoEventId = "42561",
         orgeoSubId = "2",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(41, 115),
@@ -30,7 +30,7 @@ val ME_25_Pair =
         name = "МЭ св 03.05.25",
         orgeoEventId = "42561",
         orgeoSubId = "6",
-        orgeoCategories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
+        categories = listOf("М" to listOf("5_мужчины"), "Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(41, 115),
@@ -51,7 +51,7 @@ val ME_25_Group_W =
         name = "МЭ гр Ж 04.05.25",
         orgeoEventId = "42561",
         orgeoSubId = "10",
-        orgeoCategories = listOf("Ж" to listOf("5_женщины")),
+        categories = listOf("Ж" to listOf("5_женщины")),
         points =
             listOf(
                 RunPoint(31),
@@ -84,7 +84,7 @@ val ME_25_Group_M =
         name = "МЭ гр М 04.05.25",
         orgeoEventId = "42561",
         orgeoSubId = "10",
-        orgeoCategories = listOf("М" to listOf("5_мужчины")),
+        categories = listOf("М" to listOf("5_мужчины")),
         points =
             listOf(
                 RunPoint(31),

@@ -9,7 +9,7 @@ val KMO_24_Sprint =
         name = "КМО лч сп 21.09.24",
         orgeoEventId = "37614",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("4 класс мужчины", "4 класс юниоры"), "Ж" to listOf("4 класс женщины", "4 класс юниорки")),
+        categories = listOf("М" to listOf("4 класс мужчины", "4 класс юниоры"), "Ж" to listOf("4 класс женщины", "4 класс юниорки")),
         points =
             listOf(
                 RunPoint(31),
@@ -40,7 +40,7 @@ val KMO_24_Pair_Sprint =
         name = "КМО св сп 22.09.24",
         orgeoEventId = "37613",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("4 класс мужчины", "4 класс юниоры"), "Ж" to listOf("4 класс женщины", "4 класс юниорки")),
+        categories = listOf("М" to listOf("4 класс мужчины", "4 класс юниоры"), "Ж" to listOf("4 класс женщины", "4 класс юниорки")),
         points =
             listOf(
                 RunPoint(31),
@@ -65,7 +65,7 @@ val KMO_24_Short =
         name = "КМО лч кр 12.10.24",
         orgeoEventId = "38340",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("м-М-Ж_4", "м-ЮНР-ЮНРК-16-21_4"), "Ж" to listOf("ж-М-Ж_4", "ж-ЮНР-ЮНРК-16-21_4")),
+        categories = listOf("М" to listOf("м-М-Ж_4", "м-ЮНР-ЮНРК-16-21_4"), "Ж" to listOf("ж-М-Ж_4", "ж-ЮНР-ЮНРК-16-21_4")),
         points =
             listOf(
                 RunPoint(101, 420),
@@ -90,7 +90,7 @@ val KMO_24_Long_M_Pair =
         name = "КМО св дл М 13.10.24",
         orgeoEventId = "38343",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("м_М-Ж-22-и старше_4", "м_ЮНР-ЮНРК-16-21_4")),
+        categories = listOf("М" to listOf("м_М-Ж-22-и старше_4", "м_ЮНР-ЮНРК-16-21_4")),
         points =
             listOf(
                 RunPoint(38),
@@ -122,7 +122,7 @@ val KMO_24_Long_W_Pair =
         name = "КМО св дл Ж 13.10.24",
         orgeoEventId = "38343",
         orgeoSubId = "1",
-        orgeoCategories = listOf("Ж" to listOf("ж_М-Ж-22-и старше_4", "ж_ЮНР-ЮНРК-16-21_4")),
+        categories = listOf("Ж" to listOf("ж_М-Ж-22-и старше_4", "ж_ЮНР-ЮНРК-16-21_4")),
         points =
         listOf(
             RunPoint(38),
@@ -153,7 +153,7 @@ val KMO_24_Short_3 =
         name = "КМО лч кр 3кл 12.10.24",
         orgeoEventId = "38340",
         orgeoSubId = "1",
-        orgeoCategories =
+        categories =
             listOf(
                 "М" to listOf("м-ЮН-ДЕВ-14-15_3", "м-ЮНР-ЮНРК-16-21_3", "м-М-Ж_3"),
                 "Ж" to listOf("ж-ЮН-ДЕВ-14-15_3", "ж-ЮНР-ЮНРК-16-21_3", "ж-М-Ж_3"),
@@ -182,7 +182,7 @@ val KMO_24_Short_2 =
         name = "КМО лч кр 2кл 12.10.24",
         orgeoEventId = "38340",
         orgeoSubId = "1",
-        orgeoCategories = listOf("М" to listOf("м-МАЛ-ДЕВЧ-10-13_2"), "Ж" to listOf("ж-МАЛ-ДЕВЧ-10-13_2")),
+        categories = listOf("М" to listOf("м-МАЛ-ДЕВЧ-10-13_2"), "Ж" to listOf("ж-МАЛ-ДЕВЧ-10-13_2")),
         points =
             listOf(
                 RunPoint(101, 420),
@@ -205,7 +205,7 @@ val KMO_24_Group =
         name = "КМО гр 12.10.24",
         orgeoEventId = "38341",
         orgeoSubId = "1",
-        orgeoCategories = listOf("МЖ" to listOf("гр_М-Ж_4", "гр_ЮНР-ЮНРК-16-21_4")),
+        categories = listOf("МЖ" to listOf("гр_М-Ж_4", "гр_ЮНР-ЮНРК-16-21_4")),
         points =
         listOf(
             RunPoint(101, 420),
