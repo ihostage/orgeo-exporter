@@ -27,7 +27,7 @@ fun main() {
                     Calculator.processSportOrgData(
                         category.first,
                         category.second,
-                        distance
+                        distance,
                     )
                 }
             }

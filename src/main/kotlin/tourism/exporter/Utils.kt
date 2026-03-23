@@ -5,10 +5,16 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
-// HH:MM:SS
+// [HH:]MM:SS
 fun parseDuration(value: String): Duration =
     value.split(":").map { it.toInt() }.run {
-        get(0).hours.plus(get(1).minutes).plus(get(2).seconds)
+        if (this.size == 3) {
+            get(0).hours.plus(get(1).minutes).plus(get(2).seconds)
+        } else if (this.size == 2) {
+            get(0).minutes.plus(get(1).seconds)
+        } else {
+            throw IllegalArgumentException("Cannot parse duration $value")
+        }
     }
 
 val Int.colName: String
@@ -22,19 +28,3 @@ val Int.colName: String
         }
         return letter
     }
-    // get() {
-    //     val colRef = StringBuilder(2)
-    //     var colRemain = this
-    //
-    //     while(colRemain > 0) {
-    //         var thisPart = colRemain % 26
-    //         if (thisPart == 0) {
-    //             thisPart = 26
-    //         }
-    //         colRemain = (colRemain - thisPart) / 26;
-    //
-    //         // The letter A is at 65
-    //         colRef.insert(0, (thisPart + 64).toChar())
-    //     }
-    //     return colRef.toString();
-    // }
