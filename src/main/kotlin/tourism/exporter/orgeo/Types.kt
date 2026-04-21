@@ -40,16 +40,19 @@ data class Tourist(
                         add(Pair(code, duration))
                     } catch (_: NumberFormatException) {
                     } catch (_: IndexOutOfBoundsException) {
+                    } catch (_: IllegalArgumentException) {
+                        System.err.println("Cannot parse split of $name: $split")
                     }
                 }
             }
 
     val isStarted: Boolean = state != "8"
-    val isRemoved: Boolean = listOf(
-        "1", // снят
-        "7", // сошел
-        "21", // неправильная отметка
-    ).contains(state)
+    val isRemoved: Boolean =
+        listOf(
+            "1", // снят
+            "7", // сошел
+            "21", // неправильная отметка
+        ).contains(state)
 
     val hasSplit: Boolean = split.isNotBlank()
 }
