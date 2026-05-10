@@ -6,47 +6,17 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport
+import com.google.api.client.http.HttpRequestInitializer
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.json.JsonFactory
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.client.util.store.MemoryDataStoreFactory
 import com.google.api.services.sheets.v4.Sheets
 import com.google.api.services.sheets.v4.SheetsScopes
-import com.google.api.services.sheets.v4.model.AddConditionalFormatRuleRequest
-import com.google.api.services.sheets.v4.model.AddSheetRequest
-import com.google.api.services.sheets.v4.model.AutoResizeDimensionsRequest
-import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest
-import com.google.api.services.sheets.v4.model.BooleanCondition
-import com.google.api.services.sheets.v4.model.BooleanRule
-import com.google.api.services.sheets.v4.model.Border
+import com.google.api.services.sheets.v4.model.*
 import com.google.api.services.sheets.v4.model.Borders
-import com.google.api.services.sheets.v4.model.CellData
-import com.google.api.services.sheets.v4.model.CellFormat
-import com.google.api.services.sheets.v4.model.ConditionValue
-import com.google.api.services.sheets.v4.model.ConditionalFormatRule
-import com.google.api.services.sheets.v4.model.DeleteConditionalFormatRuleRequest
-import com.google.api.services.sheets.v4.model.DimensionRange
-import com.google.api.services.sheets.v4.model.GradientRule
-import com.google.api.services.sheets.v4.model.GridProperties
-import com.google.api.services.sheets.v4.model.GridRange
-import com.google.api.services.sheets.v4.model.InterpolationPoint
-import com.google.api.services.sheets.v4.model.NumberFormat
-import com.google.api.services.sheets.v4.model.RepeatCellRequest
-import com.google.api.services.sheets.v4.model.Request
-import com.google.api.services.sheets.v4.model.Sheet
-import com.google.api.services.sheets.v4.model.SheetProperties
-import com.google.api.services.sheets.v4.model.Spreadsheet
-import com.google.api.services.sheets.v4.model.TextFormat
-import com.google.api.services.sheets.v4.model.UpdateBordersRequest
-import com.google.api.services.sheets.v4.model.UpdateSheetPropertiesRequest
-import com.google.api.services.sheets.v4.model.UpdateValuesResponse
-import com.google.api.services.sheets.v4.model.ValueRange
 import org.apache.commons.lang3.time.DurationFormatUtils.formatDuration
-import tourism.exporter.Distance
-import tourism.exporter.Result
-import tourism.exporter.RunPoint
-import tourism.exporter.TechnicalPoint
-import tourism.exporter.colName
+import tourism.exporter.*
 import tourism.exporter.googlesheets.Alignment.CENTER
 import tourism.exporter.googlesheets.Borders.BottomSolidThick
 import tourism.exporter.googlesheets.Borders.LeftSolidThick
@@ -62,7 +32,7 @@ import tourism.exporter.googlesheets.Formats.Percent
 import tourism.exporter.googlesheets.Formats.ResultTimeFormat
 import tourism.exporter.googlesheets.Formats.SplitTimeFormat
 import java.io.InputStreamReader
-import java.util.Locale
+import java.util.*
 
 class GoogleSheetsImporter(
     private val distance: Distance,
@@ -89,10 +59,12 @@ class GoogleSheetsImporter(
     private val percentColumn = StartCols.indexOf(TitleNames.PERCENT) + 1
     private val firstSplitColumn = StartCols.size + 1
     private val techSumColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.TECH_SUM) + 1
-    private val techPercentColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.TECH_PERCENT) + 1
+    private val techPercentColumn =
+        StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.TECH_PERCENT) + 1
     private val techRankColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.TECH_RANK) + 1
     private val runSumColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_SUM) + 1
-    private val runPercentColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_PERCENT) + 1
+    private val runPercentColumn =
+        StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_PERCENT) + 1
     private val runPaceColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_PACE) + 1
     private val runRankColumn = StartCols.size + distance.points.size + FinishCols.indexOf(TitleNames.RUN_RANK) + 1
 
@@ -336,9 +308,11 @@ class GoogleSheetsImporter(
 
     private fun formatTeamColumn() = updateSheet(repeatCell(oneColRange(teamColumn), textFormat = Exo2))
 
-    private fun formatResultColumn() = updateSheet(repeatCell(oneColRange(resultColumn), CENTER, Exo2, ResultTimeFormat))
+    private fun formatResultColumn() =
+        updateSheet(repeatCell(oneColRange(resultColumn), CENTER, Exo2, ResultTimeFormat))
 
-    private fun formatPercentColumn() = updateSheet(repeatCell(oneColRange(percentColumn), CENTER, Exo2, Percent, RightSolidThick))
+    private fun formatPercentColumn() =
+        updateSheet(repeatCell(oneColRange(percentColumn), CENTER, Exo2, Percent, RightSolidThick))
 
     private fun formatSplitColumns() =
         updateSheet(
@@ -357,15 +331,18 @@ class GoogleSheetsImporter(
     private fun formatTechSumColumn() =
         updateSheet(repeatCell(oneColRange(techSumColumn), CENTER, Exo2Bold, ResultTimeFormat, LeftSolidThick))
 
-    private fun formatTechPercentColumn() = updateSheet(repeatCell(oneColRange(techPercentColumn), CENTER, Exo2Bold, Percent))
+    private fun formatTechPercentColumn() =
+        updateSheet(repeatCell(oneColRange(techPercentColumn), CENTER, Exo2Bold, Percent))
 
     private fun formatTechRankColumn() = updateSheet(repeatCell(oneColRange(techRankColumn), CENTER, Exo2Bold))
 
-    private fun formatRunSumColumn() = updateSheet(repeatCell(oneColRange(runSumColumn), CENTER, Exo2, ResultTimeFormat))
+    private fun formatRunSumColumn() =
+        updateSheet(repeatCell(oneColRange(runSumColumn), CENTER, Exo2, ResultTimeFormat))
 
     private fun formatRunPercentColumn() = updateSheet(repeatCell(oneColRange(runPercentColumn), CENTER, Exo2, Percent))
 
-    private fun formatRunPaceColumn() = updateSheet(repeatCell(oneColRange(runPaceColumn), CENTER, Exo2, SplitTimeFormat))
+    private fun formatRunPaceColumn() =
+        updateSheet(repeatCell(oneColRange(runPaceColumn), CENTER, Exo2, SplitTimeFormat))
 
     private fun formatRunRankColumn() = updateSheet(repeatCell(oneColRange(runRankColumn), CENTER, Exo2))
 
@@ -427,7 +404,14 @@ class GoogleSheetsImporter(
                 },
             )
             requests.addAll(
-                listOf(techSumColumn, techPercentColumn, techRankColumn, runSumColumn, runPercentColumn, runRankColumn).map {
+                listOf(
+                    techSumColumn,
+                    techPercentColumn,
+                    techRankColumn,
+                    runSumColumn,
+                    runPercentColumn,
+                    runRankColumn
+                ).map {
                     addConditionalFormatRule(
                         listOf(oneColRange(it, startRow, endRow)),
                         GradientRule().apply {
@@ -606,8 +590,12 @@ class GoogleSheetsImporter(
         private val jsonFactory: JsonFactory = GsonFactory.getDefaultInstance()
         private val credentials: Credential by lazy { authorizeByCodeFlow() }
         private val sheets: Sheets by lazy {
+            val requestInitializer = HttpRequestInitializer { request ->
+                credentials.initialize(request)
+                request.setReadTimeout(15000) // 15 sec
+            }
             Sheets
-                .Builder(transport, jsonFactory, credentials)
+                .Builder(transport, jsonFactory, requestInitializer)
                 .setApplicationName(APPLICATION_NAME)
                 .build()
         }
