@@ -54,7 +54,7 @@ val ME_26_Pair_4 =
 
 val ME_26_Group_W =
     Distance(
-        name = "МЭ гр Ж 03.05.25",
+        name = "МЭ гр Ж 03.05.26",
         orgeoEventId = "51501",
         orgeoSubId = "12",
         categories = listOf("Ж" to listOf("Женщины_5")),
@@ -88,7 +88,7 @@ val ME_26_Group_W =
 
 val ME_26_Group_M =
     Distance(
-        name = "МЭ гр М 03.05.25",
+        name = "МЭ гр М 03.05.26",
         orgeoEventId = "51501",
         orgeoSubId = "12",
         categories = listOf("М" to listOf("Мужчины_5")),
@@ -124,7 +124,7 @@ val ME_26_Group_M =
 
 val ME_26_Group_W_4 =
     Distance(
-        name = "МЭ гр Ж 03.05.25",
+        name = "МЭ гр Ж 03.05.26",
         orgeoEventId = "51501",
         orgeoSubId = "12",
         categories = listOf("М" to listOf("Юниорки_4")),
@@ -152,7 +152,7 @@ val ME_26_Group_W_4 =
 
 val ME_26_Group_M_4 =
     Distance(
-        name = "МЭ гр М 03.05.25",
+        name = "МЭ гр М 03.05.26",
         orgeoEventId = "51501",
         orgeoSubId = "12",
         categories = listOf("М" to listOf("Юниоры_4")),

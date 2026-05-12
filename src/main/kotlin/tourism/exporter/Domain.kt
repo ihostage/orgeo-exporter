@@ -21,10 +21,17 @@ data class RunPoint(
 
 data class TechnicalPoint(
     override val name: String,
-    val successCode: Int,
+    val successCode: String,
     val failureCode: Int = -1,
 ) : DistancePoint {
-    override fun hasCode(code: String): Boolean = code == successCode.toString() || failureCode.toString() == code
+
+    constructor(name: String,
+                successCode: Int,
+                failureCode: Int = -1) :
+        this(name, successCode.toString(), failureCode)
+
+
+    override fun hasCode(code: String): Boolean = code == successCode || failureCode.toString() == code
 }
 
 data class Distance(

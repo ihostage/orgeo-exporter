@@ -592,7 +592,7 @@ class GoogleSheetsImporter(
         private val sheets: Sheets by lazy {
             val requestInitializer = HttpRequestInitializer { request ->
                 credentials.initialize(request)
-                request.setReadTimeout(15000) // 15 sec
+                request.readTimeout = 30000 // 30 sec
             }
             Sheets
                 .Builder(transport, jsonFactory, requestInitializer)
