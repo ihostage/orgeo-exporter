@@ -35,7 +35,7 @@ data class Tourist(
                 val splitQueue = LinkedList(split.split("|"))
                 while (splitQueue.size > 1) {
                     try {
-                        val duration = parseDuration(splitQueue.poll())
+                        val duration = parseDuration(splitQueue.poll().ifBlank { "00:00:01" })
                         val code = splitQueue.poll()
                         add(Pair(code, duration))
                     } catch (_: NumberFormatException) {

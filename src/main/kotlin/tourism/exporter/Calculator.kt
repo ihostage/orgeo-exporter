@@ -8,7 +8,6 @@ import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
 object Calculator {
-
     fun processSportOrgData(
         name: String,
         groupNames: List<String>,
@@ -18,21 +17,23 @@ object Calculator {
         val groups = data.groups.filter { groupNames.contains(it.name) }
         val persons = data.persons.filter { person -> groups.any { it.id == person.groupId } }
         val results = data.results.filter { result -> persons.any { it.id == result.personId } }
-        val players: List<Player> = results.map { result ->
-            val person = persons.find { it.id == result.personId }!!
-            val finishDuration = (result.finishTime - result.startTime).milliseconds
-            Player(
-                place = result.place!!,
-                name = "${person.surname} ${person.name}",
-                team = normalizeTeamName(data.organizations.find { it.id == person.organizationId }!!.name),
-                result = finishDuration,
-                split = parseSplit(result.splits.map { it.code to it.legTime.milliseconds }, finishDuration, distance),
-                isSuccessFinish = result.status == 1
-            )
-        }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE }
+        val players: List<Player> =
+            results
+                .map { result ->
+                    val person = persons.find { it.id == result.personId }!!
+                    val finishDuration = (result.finishTime - result.startTime).milliseconds
+                    Player(
+                        place = result.place!!,
+                        name = "${person.surname} ${person.name}",
+                        team = normalizeTeamName(data.organizations.find { it.id == person.organizationId }!!.name),
+                        result = finishDuration,
+                        split = parseSplit(result.splits.map { it.code to it.legTime.milliseconds }, finishDuration, distance),
+                        isSuccessFinish = result.status == 1,
+                    )
+                }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE }
         return Result(
             name,
-            players
+            players,
         )
     }
 
@@ -53,7 +54,7 @@ object Calculator {
                         normalizeTeamName(p.team),
                         p.finishDuration,
                         parseSplit(p.parsedSplit, p.finishDuration, distance),
-                        p.isStarted && !p.isRemoved
+                        p.isStarted && !p.isRemoved,
                     )
                 }.sortedBy { if (it.isSuccessFinish) it.result else Duration.INFINITE },
         )
@@ -84,7 +85,8 @@ object Calculator {
         if (split.size == distance.points.size) {
             return split
         }
-        val finish: Duration = finishDuration.minus(split.sumOf { it.time.inWholeMilliseconds }.toDuration(MILLISECONDS))
+        val finish: Duration =
+            finishDuration.minus(split.sumOf { it.time.inWholeMilliseconds }.toDuration(MILLISECONDS))
         return split.plus(DistancePointResult(distance.points.last(), finish))
     }
 
@@ -102,11 +104,12 @@ object Calculator {
                 val seedFromGroup = seeding.first.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")
                 val seedToGroup = seeding.second.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")
                 response.participants.forEach { participant ->
-                    val seedRegex = """(.*)${seedFromGroup}(.*)${seedToGroup}(.*)""".toRegex()
+                    val seedRegex = """(.*)$seedFromGroup(.*)$seedToGroup(.*)""".toRegex()
                     val result = seedRegex.find(participant.split)
                     if (result != null) {
                         participant.split =
-                            result.groupValues[1] + result.groupValues[4] + result.groupValues[3] + result.groupValues[2] + result.groupValues[5]
+                            result.groupValues[1] + result.groupValues[4] + result.groupValues[3] + result.groupValues[2] +
+                            result.groupValues[5]
                     }
                 }
             }
