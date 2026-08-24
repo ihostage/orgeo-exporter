@@ -13,7 +13,12 @@ data class RunPoint(
     val length: Int = 0,
     override val name: String = codes.toString(),
 ) : DistancePoint {
-    constructor(code: Int, length: Int = 0, name: String = code.toString()) : this(listOf(code.toString()), length, name)
+    constructor(code: Int, length: Int = 0, name: String = code.toString()) : this(
+        listOf(code.toString()),
+        length,
+        name,
+    )
+
     constructor(code: String, length: Int = 0, name: String = code) : this(listOf(code), length, name)
 
     override fun hasCode(code: String): Boolean = this.codes.contains(code)
@@ -24,12 +29,12 @@ data class TechnicalPoint(
     val successCode: String,
     val failureCode: Int = -1,
 ) : DistancePoint {
-
-    constructor(name: String,
-                successCode: Int,
-                failureCode: Int = -1) :
+    constructor(
+        name: String,
+        successCode: Int,
+        failureCode: Int = -1,
+    ) :
         this(name, successCode.toString(), failureCode)
-
 
     override fun hasCode(code: String): Boolean = code == successCode || failureCode.toString() == code
 }
@@ -42,6 +47,10 @@ data class Distance(
     val categories: List<Pair<String, List<String>>>,
     val points: List<DistancePoint>,
     val fixesSplit: List<Pair<String, String>> = listOf(),
+    /**
+     * Данные о рассеве для нормализации сплитов.
+     * Меняет местами в сплите (перед дальнейшей обработкой) группу КП с номерами из first пары на номера КП из second пары
+     */
     val seeding: List<Pair<List<String>, List<String>>> = listOf(),
 ) {
     val technicalIndexes: List<Int> =
@@ -68,7 +77,7 @@ data class Player(
     val team: String,
     val result: Duration,
     val split: List<DistancePointResult>,
-    val isSuccessFinish: Boolean
+    val isSuccessFinish: Boolean,
 ) {
     val isGoodSplit: Boolean
         get() = split.all { it.time.isPositive() }
@@ -82,6 +91,10 @@ data class Result(
         get() = players.count { it.isSuccessFinish }
 
     fun minimalGoodSplitValue(point: Int): Duration =
-        players.filter { it.isSuccessFinish }.map { it.split[point].time }.filter { it.isPositive() }.minOrNull()
+        players
+            .filter { it.isSuccessFinish }
+            .map { it.split[point].time }
+            .filter { it.isPositive() }
+            .minOrNull()
             ?: throw IllegalArgumentException("Cannot find good split value for $point")
 }
