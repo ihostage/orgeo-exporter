@@ -1,5 +1,11 @@
 package tourism.exporter
 
+import tourism.exporter.distance.g4.G4_26_4M
+import tourism.exporter.distance.g4.G4_26_4M_2day
+import tourism.exporter.distance.g4.G4_26_4W
+import tourism.exporter.distance.g4.G4_26_4W_2day
+import tourism.exporter.distance.g4.G4_26_5M
+import tourism.exporter.distance.g4.G4_26_5W
 import tourism.exporter.distance.prchr.ChR26GroupM
 import tourism.exporter.distance.prchr.ChR26GroupW
 import tourism.exporter.distance.prchr.ChR26PairM
@@ -20,7 +26,7 @@ fun main() {
 //    GoogleSheetsImporter.sheetId = "1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4"
     // Лёха Безруков https://docs.google.com/spreadsheets/d/1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE/
     // GoogleSheetsImporter.sheetId = "1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE"
-    val distances: List<Distance> = listOf(ChR26GroupW)
+    val distances: List<Distance> = listOf(G4_26_4W_2day)
     distances.forEach { distance ->
         val results =
             distance.categories.map { category ->
