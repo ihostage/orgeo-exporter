@@ -1,5 +1,6 @@
 package tourism.exporter.orgeo
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import tourism.exporter.parseDuration
 import java.util.LinkedList
@@ -26,6 +27,8 @@ data class Tourist(
     var split: String,
     @JsonProperty("otm")
     val state: String?,
+    @JsonIgnore
+    var seeding: String?,
 ) {
     val finishDuration: Duration = parseDuration(finish)
 

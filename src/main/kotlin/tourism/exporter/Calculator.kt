@@ -50,7 +50,7 @@ object Calculator {
                 .map { p ->
                     Player(
                         p.place,
-                        p.name,
+                        p.name + p.seeding?.let { "\n$it" },
                         normalizeTeamName(p.team),
                         p.finishDuration,
                         parseSplit(p.parsedSplit, p.finishDuration, distance),
@@ -100,6 +100,24 @@ object Calculator {
         distance: Distance,
     ): List<OrgeoResponse> {
         data.forEach { response ->
+            // Определяем условные номера рассева
+            response.participants.forEach { participant ->
+                var seedPoint = false
+                val seedingRoute: MutableList<String> = mutableListOf()
+                for (p in participant.split.split('|')) {
+                    if (seedPoint && !p.contains(':')) {
+                        seedingRoute.add(p)
+                        seedPoint = false
+                    }
+                    if (distance.seedingPoints.contains(p)) {
+                        seedPoint = true
+                    }
+                }
+                if (seedingRoute.isNotEmpty()) {
+                    participant.seeding = seedingRoute.joinToString(" - ")
+                }
+            }
+
             distance.seeding.forEach { seeding ->
                 val seedFromGroup = seeding.first.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")
                 val seedToGroup = seeding.second.joinToString("\\|[^|]*\\|", prefix = "(\\|[^|]*\\|", postfix = ")")

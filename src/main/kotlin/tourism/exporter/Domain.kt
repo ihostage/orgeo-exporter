@@ -52,6 +52,10 @@ data class Distance(
      * Меняет местами в сплите (перед дальнейшей обработкой) группу КП с номерами из first пары на номера КП из second пары
      */
     val seeding: List<Pair<List<String>, List<String>>> = listOf(),
+    /**
+     * КП старта/финиша петель рассева.
+     */
+    val seedingPoints: List<String> = listOf(),
 ) {
     val technicalIndexes: List<Int> =
         points
