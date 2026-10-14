@@ -50,7 +50,7 @@ object Calculator {
                 .map { p ->
                     Player(
                         p.place,
-                        p.name + p.seeding?.let { "\n$it" },
+                        p.seeding?.let { "${p.name}\n$it" } ?: p.name,
                         normalizeTeamName(p.team),
                         p.finishDuration,
                         parseSplit(p.parsedSplit, p.finishDuration, distance),

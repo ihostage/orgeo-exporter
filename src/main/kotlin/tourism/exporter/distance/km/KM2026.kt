@@ -199,3 +199,67 @@ val KM_26_MS_W =
                 listOf(79, 110).map { it.toString() } to listOf(52, 110).map { it.toString() },
             ),
     )
+
+val KM_26_2_Short =
+    Distance(
+        name = "КМ кр 2 10.10.26",
+        orgeoEventId = "56064",
+        orgeoSubId = "1",
+        categories =
+            listOf(
+                "Дев" to listOf("2кл_Девочки"),
+                "Девушки" to listOf("2кл_Девушки"),
+                "Юн-Ж" to listOf("2кл_Юниорки"),
+                "Ж" to listOf("2кл_Женщины"),
+                "Мал" to listOf("2кл_Мальчики"),
+                "Юноши" to listOf("2кл_Юноши"),
+                "Юн-М" to listOf("2кл_Юниоры"),
+                "М" to listOf("2кл_Мужчины"),
+            ),
+        points =
+            listOf(
+                RunPoint(101, length = 30),
+                TechnicalPoint("Навеска", 131, failureCode = 201),
+                RunPoint(102, length = 250),
+                TechnicalPoint("Маятник", 132, failureCode = 202),
+                RunPoint(104, length = 460),
+                TechnicalPoint("Спуск", 134, failureCode = 204),
+                TechnicalPoint("Подъём", 135, failureCode = 205),
+                RunPoint(106, length = 330),
+                TechnicalPoint("Бревно", 136, failureCode = 206),
+                RunPoint(107, length = 180),
+                TechnicalPoint("||ки", 137, failureCode = 207),
+                RunPoint("FIN", length = 130, "000"),
+            ),
+    )
+
+val KM_26_3_Short =
+    Distance(
+        name = "КМ кр 3 10.10.26",
+        orgeoEventId = "56064",
+        orgeoSubId = "7",
+        categories =
+            listOf(
+                "Д" to listOf("3кл_Девушки"),
+                "Ж" to listOf("3кл_Женщины"),
+                "Ю" to listOf("3кл_Юноши"),
+                "М" to listOf("3кл_Мужчины"),
+            ),
+        points =
+            listOf(
+                RunPoint(101, length = 30),
+                TechnicalPoint("Навеска", 131, failureCode = 201),
+                RunPoint(102, length = 250),
+                TechnicalPoint("Маятник", 132, failureCode = 202),
+                RunPoint(103, length = 90),
+                TechnicalPoint("П-ка", 133, failureCode = 203),
+                RunPoint(104, length = 370),
+                TechnicalPoint("Спуск", 134, failureCode = 204),
+                TechnicalPoint("Подъём", 135, failureCode = 205),
+                RunPoint(106, length = 330),
+                TechnicalPoint("Бревно", 136, failureCode = 206),
+                RunPoint(107, length = 180),
+                TechnicalPoint("||ки", 137, failureCode = 207),
+                RunPoint("FIN", length = 130, "000"),
+            ),
+    )
