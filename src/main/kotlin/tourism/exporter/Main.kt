@@ -1,5 +1,9 @@
 package tourism.exporter
 
+import tourism.exporter.distance.kh.KH26Group
+import tourism.exporter.distance.kh.KH26PairM
+import tourism.exporter.distance.kh.KH26PairW
+import tourism.exporter.distance.kh.KH26Short
 import tourism.exporter.distance.km.KM_26_2_Short
 import tourism.exporter.distance.km.KM_26_3_Short
 import tourism.exporter.distance.km.KM_26_MS_M
@@ -15,7 +19,7 @@ fun main() {
 //    GoogleSheetsImporter.sheetId = "1IalMl9eYJUVWdXPu1lfv-bydwu0wiLI2jUQNtvUnuk4"
     // Лёха Безруков https://docs.google.com/spreadsheets/d/1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE/
 //    GoogleSheetsImporter.sheetId = "1mSvBTc0YZG681Vm1fZxfxEqP4KZCNdUN_3VYnZyd6IE"
-    val distances: List<Distance> = listOf(KM_26_2_Short)
+    val distances: List<Distance> = listOf(KH26Group)
     distances.forEach { distance ->
         val results =
             distance.categories.map { category ->
